@@ -11,4 +11,20 @@ public class Documentos {
 
     @Column
     Integer documentsize;
+
+    public String getDocumentname() {
+        return documentname;
+    }
+
+    public void setDocumentname(String documentname) {
+        this.documentname = documentname;
+    }
+
+    public Integer getDocumentsize() {
+        return documentsize;
+    }
+
+    public void setDocumentsize(Integer documentsize) {
+        this.documentsize = documentsize;
+    }
 }

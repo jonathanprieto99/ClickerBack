@@ -11,6 +11,19 @@ public class EmpresasTaxi {
     @Column(unique = true)
     String empresa;
 
+    public Long getIdEmptaxi() {
+        return idEmptaxi;
+    }
 
+    public void setIdEmptaxi(Long idEmptaxi) {
+        this.idEmptaxi = idEmptaxi;
+    }
 
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
 }

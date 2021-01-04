@@ -47,5 +47,100 @@ public class Solicitudes {
     @Column
     String tiempocompra;
 
+    public Long getSolicitudesId() {
+        return solicitudesId;
+    }
+
+    public void setSolicitudesId(Long solicitudesId) {
+        this.solicitudesId = solicitudesId;
+    }
+
+    public String getTipouso() {
+        return tipouso;
+    }
+
+    public void setTipouso(String tipouso) {
+        this.tipouso = tipouso;
+    }
+
+    public String getTipoauto() {
+        return tipoauto;
+    }
+
+    public void setTipoauto(String tipoauto) {
+        this.tipoauto = tipoauto;
+    }
+
+    public Boolean getCredito() {
+        return credito;
+    }
+
+    public void setCredito(Boolean credito) {
+        this.credito = credito;
+    }
+
+    public String getEntidadcrediticia() {
+        return entidadcrediticia;
+    }
+
+    public void setEntidadcrediticia(String entidadcrediticia) {
+        this.entidadcrediticia = entidadcrediticia;
+    }
+
+    public Autos getAuto() {
+        return auto;
+    }
+
+    public void setAuto(Autos auto) {
+        this.auto = auto;
+    }
+
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getCanalinput() {
+        return canalinput;
+    }
+
+    public void setCanalinput(String canalinput) {
+        this.canalinput = canalinput;
+    }
+
+    public String getCiudadcompra() {
+        return ciudadcompra;
+    }
+
+    public void setCiudadcompra(String ciudadcompra) {
+        this.ciudadcompra = ciudadcompra;
+    }
+
+    public Time getHora() {
+        return hora;
+    }
+
+    public void setHora(Time hora) {
+        this.hora = hora;
+    }
+
+    public String getTiempocompra() {
+        return tiempocompra;
+    }
+
+    public void setTiempocompra(String tiempocompra) {
+        this.tiempocompra = tiempocompra;
+    }
 }
 

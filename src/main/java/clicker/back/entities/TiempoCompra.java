@@ -11,4 +11,20 @@ public class TiempoCompra {
 
     @Column
     String tiempo;
+
+    public Long getIdTiempocompra() {
+        return idTiempocompra;
+    }
+
+    public void setIdTiempocompra(Long idTiempocompra) {
+        this.idTiempocompra = idTiempocompra;
+    }
+
+    public String getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(String tiempo) {
+        this.tiempo = tiempo;
+    }
 }
