@@ -2,7 +2,7 @@ package clicker.back.entities;
 
 import javax.persistence.*;
 
-@Entity(name = "user")
+@Entity
 public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

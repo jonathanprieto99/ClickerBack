@@ -1,12 +1,10 @@
 package clicker.back.entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 
+@Entity
 public class Registrodecambio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
