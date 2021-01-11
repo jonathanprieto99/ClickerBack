@@ -27,7 +27,7 @@ public class SedesConcesionarios {
     @Column(length = 500)
     String linkQr;
 
-    public Long getIdSedeConcesionarios() {
+    public Long getIdSedeConcesionarios() {     
         return idSedeConcesionarios;
     }
 

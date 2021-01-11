@@ -23,9 +23,9 @@ public class Solicitudes {
     @Column
     String entidadcrediticia;
 
-    @JoinColumn(name = "id_auto")
-    @ManyToOne
-    Autos auto;
+    //@JoinColumn(name = "id_auto")
+    //@ManyToOne
+    //Auto auto;
 
     @JoinColumn(name = "id_user")
     @ManyToOne
@@ -87,13 +87,13 @@ public class Solicitudes {
         this.entidadcrediticia = entidadcrediticia;
     }
 
-    public Autos getAuto() {
+    /*public Auto getAuto() {
         return auto;
     }
 
-    public void setAuto(Autos auto) {
+    public void setAuto(Auto auto) {
         this.auto = auto;
-    }
+    }*/
 
     public Usuarios getUsuario() {
         return usuario;

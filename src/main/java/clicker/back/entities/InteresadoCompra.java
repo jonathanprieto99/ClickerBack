@@ -3,14 +3,15 @@ package clicker.back.entities;
 import javax.persistence.*;
 
 @Entity
-public class Usuarios {
-    @Column(name = "id_usuario")
+public class InteresadoCompra {
+    @Column(name = "id_interesados_compra")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     Long id;
 
-    @Column
-    String fbId;
+    @JoinColumn(name = "id_auto_semi_nuevo")
+    @ManyToOne
+    AutoSemiNuevo autoSemiNuevo;
 
     @Column
     String nombre;
@@ -18,28 +19,16 @@ public class Usuarios {
     @Column
     String apellidos;
 
-    @Column(length = 1000)
-    String imagenPerfil;
-
-    @Column
-    Long numTelefono;
+    @Column(length = 25)
+    String numTelefono;
 
     @Column
     String correo;
 
-    @Column(length = 50)
-    String tipoLicencia;
-
-    @Column(length = 100)
-    String tiempoLicencia;
-
-    @Column
-    Boolean trabajoAplicativo;
-
     @Column
     String tipoDocumento;
 
-    @Column(length = 25)
+    @Column
     String numDocumento;
 
     public Long getId() {
@@ -50,12 +39,12 @@ public class Usuarios {
         this.id = id;
     }
 
-    public String getFbId() {
-        return fbId;
+    public AutoSemiNuevo getAutoSemiNuevo() {
+        return autoSemiNuevo;
     }
 
-    public void setFbId(String fbId) {
-        this.fbId = fbId;
+    public void setAutoSemiNuevo(AutoSemiNuevo autoSemiNuevo) {
+        this.autoSemiNuevo = autoSemiNuevo;
     }
 
     public String getNombre() {
@@ -74,19 +63,11 @@ public class Usuarios {
         this.apellidos = apellidos;
     }
 
-    public String getImagenPerfil() {
-        return imagenPerfil;
-    }
-
-    public void setImagenPerfil(String imagenPerfil) {
-        this.imagenPerfil = imagenPerfil;
-    }
-
-    public Long getNumTelefono() {
+    public String getNumTelefono() {
         return numTelefono;
     }
 
-    public void setNumTelefono(Long numTelefono) {
+    public void setNumTelefono(String numTelefono) {
         this.numTelefono = numTelefono;
     }
 
@@ -96,30 +77,6 @@ public class Usuarios {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public String getTipoLicencia() {
-        return tipoLicencia;
-    }
-
-    public void setTipoLicencia(String tipoLicencia) {
-        this.tipoLicencia = tipoLicencia;
-    }
-
-    public String getTiempoLicencia() {
-        return tiempoLicencia;
-    }
-
-    public void setTiempoLicencia(String tiempoLicencia) {
-        this.tiempoLicencia = tiempoLicencia;
-    }
-
-    public Boolean getTrabajoAplicativo() {
-        return trabajoAplicativo;
-    }
-
-    public void setTrabajoAplicativo(Boolean trabajoAplicativo) {
-        this.trabajoAplicativo = trabajoAplicativo;
     }
 
     public String getTipoDocumento() {
@@ -137,4 +94,6 @@ public class Usuarios {
     public void setNumDocumento(String numDocumento) {
         this.numDocumento = numDocumento;
     }
+
 }
+

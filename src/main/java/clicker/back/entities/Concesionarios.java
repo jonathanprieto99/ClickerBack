@@ -15,7 +15,6 @@ public class Concesionarios {
     @Column
     Long ruc;
 
-
     public String getConcesionario() {
         return concesionario;
     }

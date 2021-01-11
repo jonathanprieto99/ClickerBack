@@ -1,36 +1,36 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.Autos;
-import clicker.back.repositories.AutosRepository;
-import clicker.back.services.AutosService;
+import clicker.back.entities.Auto;
+import clicker.back.repositories.AutoRepository;
+import clicker.back.services.AutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class DefaultAutosService implements AutosService{
+public class DefaultAutosService implements AutoService {
     @Autowired
-    AutosRepository autosRepository;
+    AutoRepository autosRepository;
 
 
     @Override
-    public Autos save(Autos autos) {
+    public Auto save(Auto autos) {
         return autosRepository.save(autos);
     }
 
     @Override
-    public void delete(Autos autos) {
+    public void delete(Auto autos) {
         autosRepository.delete(autos);
     }
 
     @Override
-    public Autos getById(Autos autos) {
-        return autosRepository.findById(autos.getIdAuto()).orElse(null);
+    public Auto getById(Auto autos) {
+        return autosRepository.findById(autos.getId()).orElse(null);
     }
 
     @Override
-    public List<Autos> getAll() {
-        return (List<Autos>) autosRepository.findAll();
+    public List<Auto> getAll() {
+        return (List<Auto>) autosRepository.findAll();
     }
 }

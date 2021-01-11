@@ -1,6 +1,5 @@
 package clicker.back.services;
 
-import clicker.back.entities.Users;
 import clicker.back.entities.Usuarios;
 
 import java.util.List;

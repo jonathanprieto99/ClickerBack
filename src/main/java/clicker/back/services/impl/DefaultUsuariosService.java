@@ -27,7 +27,7 @@ public class DefaultUsuariosService implements UsuariosService {
 
     @Override
     public Usuarios getById(Usuarios usuarios) {
-        return usuariosRepository.findById(usuarios.getIdUser()).orElse(null);
+        return usuariosRepository.findById(usuarios.getId()).orElse(null);
     }
 
     @Override

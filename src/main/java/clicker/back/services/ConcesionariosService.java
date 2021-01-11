@@ -1,6 +1,5 @@
 package clicker.back.services;
 
-import clicker.back.entities.Autos;
 import clicker.back.entities.Concesionarios;
 
 import java.util.List;

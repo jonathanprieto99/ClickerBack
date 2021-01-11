@@ -12,7 +12,7 @@ public class VisitasConcesionario {
 
     @JoinColumn(name = "id_user")
     @ManyToOne
-    Users users;
+    User user;
 
     @JoinColumn(name ="id_sede_concesionario")
     @ManyToOne
@@ -36,12 +36,12 @@ public class VisitasConcesionario {
         this.idVisita = idVisita;
     }
 
-    public Users getUsers() {
-        return users;
+    public User getUsers() {
+        return user;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setUsers(User user) {
+        this.user = user;
     }
 
     public SedesConcesionarios getSedesConcesionario() {

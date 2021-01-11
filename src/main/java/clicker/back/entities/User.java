@@ -3,7 +3,8 @@ package clicker.back.entities;
 import javax.persistence.*;
 
 @Entity
-public class Users {
+@Table(name = "\"user\"")
+public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     Long id;

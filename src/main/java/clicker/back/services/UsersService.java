@@ -1,17 +1,16 @@
 package clicker.back.services;
 
-import clicker.back.entities.TiempoCompra;
-import clicker.back.entities.Users;
+import clicker.back.entities.User;
 
 import java.util.List;
 
 public interface UsersService {
 
-    Users save(Users users);
+    User save(User user);
 
-    void delete(Users users);
+    void delete(User user);
 
-    Users getById(Users users);
+    User getById(User user);
 
-    List<Users> getAll();
+    List<User> getAll();
 }

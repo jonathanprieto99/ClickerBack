@@ -1,0 +1,265 @@
+package clicker.back.entities;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+@Entity
+public class AutoSemiNuevo {
+    @Column(name = "id_auto_semi_nuevo")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    Long id;
+
+    @JoinColumn(name = "id_auto")
+    @ManyToOne
+    Auto auto;
+
+    @JoinColumn(name = "id_usuario")
+    @ManyToOne
+    Usuarios usuario;
+
+    @Column
+    Long precioVenta;
+
+    @Column
+    String moneda;
+
+    @Column
+    Integer codversion;
+
+    @Column
+    String version;
+
+    @ElementCollection
+    List<String> ciudadesDisponibles;
+
+    @Column
+    Long kilometraje;
+
+    @Column
+    String tipoAuto;
+
+    @Column
+    Boolean presentar;
+
+    @Column
+    Boolean comprado;
+
+    @Column
+    Boolean validado;
+
+    @Column
+    Integer comisionUsuario;
+
+    @Column
+    Integer comisionVendedor;
+
+    @Column
+    Integer comisionEmpresa;
+
+    @Column
+    Date fechaPublicacion;
+
+    @Column
+    Boolean enabled;
+
+    @Column
+    Integer duenoCarro;
+
+    @Column(length = 1000)
+    String video;
+
+    @ElementCollection
+    List<String> fotos;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    AutoRemovido autoRemovido;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    List<InteresadoCompra> interesados;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Auto getAuto() {
+        return auto;
+    }
+
+    public void setAuto(Auto auto) {
+        this.auto = auto;
+    }
+
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
+    }
+
+    public Long getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(Long precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+
+    public String getMoneda() {
+        return moneda;
+    }
+
+    public void setMoneda(String moneda) {
+        this.moneda = moneda;
+    }
+
+    public Integer getCodversion() {
+        return codversion;
+    }
+
+    public void setCodversion(Integer codversion) {
+        this.codversion = codversion;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public List<String> getCiudadesDisponibles() {
+        return ciudadesDisponibles;
+    }
+
+    public void setCiudadesDisponibles(List<String> ciudadesDisponibles) {
+        this.ciudadesDisponibles = ciudadesDisponibles;
+    }
+
+    public Long getKilometraje() {
+        return kilometraje;
+    }
+
+    public void setKilometraje(Long kilometraje) {
+        this.kilometraje = kilometraje;
+    }
+
+    public String getTipoAuto() {
+        return tipoAuto;
+    }
+
+    public void setTipoAuto(String tipoAuto) {
+        this.tipoAuto = tipoAuto;
+    }
+
+    public Boolean getPresentar() {
+        return presentar;
+    }
+
+    public void setPresentar(Boolean presentar) {
+        this.presentar = presentar;
+    }
+
+    public Boolean getComprado() {
+        return comprado;
+    }
+
+    public void setComprado(Boolean comprado) {
+        this.comprado = comprado;
+    }
+
+    public Boolean getValidado() {
+        return validado;
+    }
+
+    public void setValidado(Boolean validado) {
+        this.validado = validado;
+    }
+
+    public Integer getComisionUsuario() {
+        return comisionUsuario;
+    }
+
+    public void setComisionUsuario(Integer comisionUsuario) {
+        this.comisionUsuario = comisionUsuario;
+    }
+
+    public Integer getComisionVendedor() {
+        return comisionVendedor;
+    }
+
+    public void setComisionVendedor(Integer comisionVendedor) {
+        this.comisionVendedor = comisionVendedor;
+    }
+
+    public Integer getComisionEmpresa() {
+        return comisionEmpresa;
+    }
+
+    public void setComisionEmpresa(Integer comisionEmpresa) {
+        this.comisionEmpresa = comisionEmpresa;
+    }
+
+    public Date getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public void setFechaPublicacion(Date fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Integer getDuenoCarro() {
+        return duenoCarro;
+    }
+
+    public void setDuenoCarro(Integer duenoCarro) {
+        this.duenoCarro = duenoCarro;
+    }
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public List<String> getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(List<String> fotos) {
+        this.fotos = fotos;
+    }
+
+    public AutoRemovido getAutoRemovido() {
+        return autoRemovido;
+    }
+
+    public void setAutoRemovido(AutoRemovido autoRemovido) {
+        this.autoRemovido = autoRemovido;
+    }
+
+    public List<InteresadoCompra> getInteresados() {
+        return interesados;
+    }
+
+    public void setInteresados(List<InteresadoCompra> interesados) {
+        this.interesados = interesados;
+    }
+}
