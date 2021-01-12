@@ -5,10 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "\"user\"")
 public class User {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    Long id;
 
+    @Id
     @Column(unique = true,length = 100)
     String email;
 
@@ -27,13 +25,6 @@ public class User {
     @Column
     Boolean superuser;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;

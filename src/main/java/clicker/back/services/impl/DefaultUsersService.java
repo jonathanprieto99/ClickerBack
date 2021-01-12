@@ -27,11 +27,21 @@ public class DefaultUsersService implements UsersService {
 
     @Override
     public User getById(User user) {
-        return usersRepository.findById(user.getId()).orElse(null);
+        return usersRepository.findById(user.getEmail()).orElse(null);
     }
 
     @Override
     public List<User> getAll() {
         return (List<User>) usersRepository.findAll();
+    }
+
+    @Override
+    public User login(String email, String password) {
+        return usersRepository.findByEmailAndPassword(email,password);
+    }
+
+    @Override
+    public User getByEmail(String email) {
+        return usersRepository.findByEmail(email);
     }
 }

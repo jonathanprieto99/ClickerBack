@@ -6,12 +6,13 @@ import java.util.List;
 
 public interface UsuariosService {
 
+    Usuarios login(String correo,String password);
 
     Usuarios save(Usuarios usuarios);
 
     void delete(Usuarios usuarios);
 
-    Usuarios getById(Usuarios usuarios);
+    Usuarios getById(String id );
 
     List<Usuarios> getAll();
 }

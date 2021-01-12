@@ -16,6 +16,11 @@ public class DefaultUsuariosService implements UsuariosService {
 
 
     @Override
+    public Usuarios login(String correo,String password ) {
+        return usuariosRepository.findByCorreoAndPassword(correo,password);
+    }
+
+    @Override
     public Usuarios save(Usuarios usuarios) {
         return usuariosRepository.save(usuarios);
     }
@@ -26,8 +31,8 @@ public class DefaultUsuariosService implements UsuariosService {
     }
 
     @Override
-    public Usuarios getById(Usuarios usuarios) {
-        return usuariosRepository.findById(usuarios.getId()).orElse(null);
+    public Usuarios getById(String id ) {
+        return usuariosRepository.findById(id).orElse(null);
     }
 
     @Override

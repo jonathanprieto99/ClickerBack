@@ -4,10 +4,6 @@ import javax.persistence.*;
 
 @Entity
 public class Usuarios {
-    @Column(name = "id_usuario")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    Long id;
 
     @Column
     String fbId;
@@ -24,8 +20,12 @@ public class Usuarios {
     @Column
     Long numTelefono;
 
-    @Column
+    @Id
+    @Column(unique = true,name = "id_usuario")
     String correo;
+
+    @Column
+    String password;
 
     @Column(length = 50)
     String tipoLicencia;
@@ -42,13 +42,6 @@ public class Usuarios {
     @Column(length = 25)
     String numDocumento;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFbId() {
         return fbId;
@@ -136,5 +129,13 @@ public class Usuarios {
 
     public void setNumDocumento(String numDocumento) {
         this.numDocumento = numDocumento;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
