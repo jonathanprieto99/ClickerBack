@@ -5,15 +5,12 @@ import clicker.back.Setup;
 import clicker.back.entities.AutoSemiNuevo;
 import clicker.back.entities.Usuario;
 import clicker.back.services.UsuariosService;
-import com.sun.mail.iap.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
