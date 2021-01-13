@@ -16,7 +16,7 @@ public class VentaSemiNuevo {
 
     @JoinColumn(name = "id_vendedor")
     @ManyToOne
-    Usuarios vendedor;
+    Usuario vendedor;
 
     @Column
     Date fecha;
@@ -46,11 +46,11 @@ public class VentaSemiNuevo {
         this.autoSemiNuevo = autoSemiNuevo;
     }
 
-    public Usuarios getVendedor() {
+    public Usuario getVendedor() {
         return vendedor;
     }
 
-    public void setVendedor(Usuarios vendedor) {
+    public void setVendedor(Usuario vendedor) {
         this.vendedor = vendedor;
     }
 

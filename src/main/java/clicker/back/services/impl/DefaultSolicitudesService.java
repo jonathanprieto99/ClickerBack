@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.Solicitudes;
+import clicker.back.Antiguo.Solicitudes;
 import clicker.back.repositories.SolicitudesRepository;
 import clicker.back.services.SolicitudesService;
 import org.springframework.beans.factory.annotation.Autowired;

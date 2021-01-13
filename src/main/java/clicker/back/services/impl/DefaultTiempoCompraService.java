@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.TiempoCompra;
+import clicker.back.Antiguo.TiempoCompra;
 import clicker.back.repositories.TiempoCompraRepository;
 import clicker.back.services.TiempoCompraService;
 import org.springframework.beans.factory.annotation.Autowired;

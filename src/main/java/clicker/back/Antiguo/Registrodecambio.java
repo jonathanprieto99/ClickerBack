@@ -1,4 +1,4 @@
-package clicker.back.entities;
+package clicker.back.Antiguo;
 
 import javax.persistence.*;
 import java.sql.Time;

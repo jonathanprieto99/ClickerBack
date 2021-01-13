@@ -5,16 +5,16 @@ import java.util.List;
 
 @Entity
 public class Auto {
+    @Id
     @Column(name = "id_auto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
     Long id;
 
     @Column
     String modelo;
 
     @Column
-    Long anofabricacion;
+    Long anoFabricacion;
 
     @Column
     Long precioSugerido;
@@ -53,12 +53,12 @@ public class Auto {
         this.modelo = modelo;
     }
 
-    public Long getAnofabricacion() {
-        return anofabricacion;
+    public Long getAnoFabricacion() {
+        return anoFabricacion;
     }
 
-    public void setAnofabricacion(Long anofabricacion) {
-        this.anofabricacion = anofabricacion;
+    public void setAnoFabricacion(Long anoFabricacion) {
+        this.anoFabricacion = anoFabricacion;
     }
 
     public Long getPrecioSugerido() {

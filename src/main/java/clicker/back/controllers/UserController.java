@@ -1,8 +1,8 @@
 package clicker.back.controllers;
 
 import clicker.back.Setup;
-import clicker.back.entities.User;
-import clicker.back.entities.Usuarios;
+import clicker.back.entities.Users;
+import clicker.back.entities.Usuario;
 import clicker.back.services.UsersService;
 import clicker.back.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +23,13 @@ public class UserController {
 
     @PostMapping("/create")
     @ResponseBody
-    public ResponseEntity<Object> create(@RequestBody User user){
-        if(user.getEmail()==null || user.getPassword()==null)return new ResponseEntity<>("no se envio el email", HttpStatus.BAD_REQUEST);
-        Usuarios usuario= usuariosService.getById(user.getEmail());
+    public ResponseEntity<Object> create(@RequestBody Users users){
+        if(users.getEmail()==null || users.getPassword()==null)return new ResponseEntity<>("no se envio el email", HttpStatus.BAD_REQUEST);
+        Usuario usuario= usuariosService.getById(users.getEmail());
         if(usuario==null){
-            User temp = userService.getById(user);
+            Users temp = userService.getById(users);
             if(temp==null){
-                return new ResponseEntity<>(userService.save(user   ), HttpStatus.OK);
+                return new ResponseEntity<>(userService.save(users), HttpStatus.OK);
             }
         }
         return new ResponseEntity<>("se encontro un user con ese correo", HttpStatus.BAD_REQUEST);}

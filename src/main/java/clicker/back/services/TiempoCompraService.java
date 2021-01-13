@@ -1,7 +1,6 @@
 package clicker.back.services;
 
-import clicker.back.entities.Solicitudes;
-import clicker.back.entities.TiempoCompra;
+import clicker.back.Antiguo.TiempoCompra;
 
 import java.util.List;
 

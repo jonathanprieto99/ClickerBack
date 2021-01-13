@@ -1,9 +1,13 @@
 package clicker.back.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class Usuarios {
+public class Usuario {
 
     @Column
     String fbId;
@@ -42,6 +46,21 @@ public class Usuarios {
     @Column(length = 25)
     String numDocumento;
 
+    @Column
+    Boolean enabled;
+
+    @Column
+    Boolean particular;
+
+    @Column
+    Long balance;
+
+    @Column
+    Integer cantidadCarrosAno;
+
+    @JsonIgnoreProperties("usuario")
+    @OneToMany(cascade = CascadeType.ALL    )
+    List<AutoSemiNuevo> carrosPosteados;
 
     public String getFbId() {
         return fbId;
@@ -137,5 +156,45 @@ public class Usuarios {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Boolean getParticular() {
+        return particular;
+    }
+
+    public void setParticular(Boolean particular) {
+        this.particular = particular;
+    }
+
+    public Long getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Long balance) {
+        this.balance = balance;
+    }
+
+    public Integer getCantidadCarrosAno() {
+        return cantidadCarrosAno;
+    }
+
+    public void setCantidadCarrosAno(Integer cantidadCarrosAno) {
+        this.cantidadCarrosAno = cantidadCarrosAno;
+    }
+
+    public List<AutoSemiNuevo> getCarrosPosteados() {
+        return carrosPosteados;
+    }
+
+    public void setCarrosPosteados(List<AutoSemiNuevo> carrosPosteados) {
+        this.carrosPosteados = carrosPosteados;
     }
 }

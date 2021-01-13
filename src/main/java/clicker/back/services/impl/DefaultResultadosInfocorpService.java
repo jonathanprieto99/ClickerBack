@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.ResultadosInfocorp;
+import clicker.back.Antiguo.ResultadosInfocorp;
 import clicker.back.repositories.ResultadosInfocorpRepository;
 import clicker.back.services.ResultadosInfocorpService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.SedesConcesionarios;
+import clicker.back.Antiguo.SedesConcesionarios;
 import clicker.back.repositories.SedesConcesionariosRepository;
 import clicker.back.services.SedesConcesionariosService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,6 @@
 package clicker.back.services;
 
-import clicker.back.entities.Registrodecambio;
-import clicker.back.entities.ResultadosInfocorp;
+import clicker.back.Antiguo.ResultadosInfocorp;
 
 import java.util.List;
 

@@ -3,8 +3,8 @@ package clicker.back.entities;
 import javax.persistence.*;
 
 @Entity
-public class AutoRemovido {
-    @Column(name = "id_removido")
+public class SolicitudRemocionAuto {
+    @Column(name = "id_solicitud_remocion_auto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     Long id;

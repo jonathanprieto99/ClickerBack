@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.VisitasConcesionario;
+import clicker.back.Antiguo.VisitasConcesionario;
 import clicker.back.repositories.VisitasConcesionarioRepository;
 import clicker.back.services.VisitasConcesionarioService;
 import org.springframework.beans.factory.annotation.Autowired;

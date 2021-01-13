@@ -1,6 +1,6 @@
 package clicker.back.services;
 
-import clicker.back.entities.Concesionarios;
+import clicker.back.Antiguo.Concesionarios;
 
 import java.util.List;
 

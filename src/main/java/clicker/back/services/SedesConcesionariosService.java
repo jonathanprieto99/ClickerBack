@@ -1,7 +1,6 @@
 package clicker.back.services;
 
-import clicker.back.entities.ResultadosInfocorp;
-import clicker.back.entities.SedesConcesionarios;
+import clicker.back.Antiguo.SedesConcesionarios;
 
 import java.util.List;
 

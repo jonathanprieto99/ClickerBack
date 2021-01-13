@@ -1,7 +1,6 @@
 package clicker.back.services;
 
-import clicker.back.entities.Usuarios;
-import clicker.back.entities.VisitasConcesionario;
+import clicker.back.Antiguo.VisitasConcesionario;
 
 import java.util.List;
 

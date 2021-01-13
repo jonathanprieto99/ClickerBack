@@ -1,6 +1,5 @@
 package clicker.back.services;
 
-import clicker.back.entities.AutoRemovido;
 import clicker.back.entities.AutoSemiNuevo;
 
 import java.util.List;

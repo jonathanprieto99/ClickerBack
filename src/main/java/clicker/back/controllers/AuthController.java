@@ -1,12 +1,11 @@
 package clicker.back.controllers;
 
 import clicker.back.Setup;
-import clicker.back.entities.User;
-import clicker.back.entities.Usuarios;
+import clicker.back.entities.Users;
+import clicker.back.entities.Usuario;
 import clicker.back.services.UsersService;
 import clicker.back.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,11 +22,11 @@ public class AuthController {
 
     @PostMapping(value = "/register")
     @ResponseBody
-    public ResponseEntity<Object> register(@RequestBody Usuarios usuario) {
+    public ResponseEntity<Object> register(@RequestBody Usuario usuario) {
         if(usuario.getCorreo()==null || usuario.getPassword()==null)return new ResponseEntity<>("no se envio el email", HttpStatus.BAD_REQUEST);
-        User user = usersService.getByEmail(usuario.getCorreo());
-        if(user==null){
-            Usuarios temp = usuariosService.getById(usuario.getCorreo());
+        Users users = usersService.getByEmail(usuario.getCorreo());
+        if(users ==null){
+            Usuario temp = usuariosService.getById(usuario.getCorreo());
             if(temp==null){
                 return new ResponseEntity<>(usuariosService.save(usuario), HttpStatus.OK);
             }
@@ -38,10 +37,10 @@ public class AuthController {
 
     @PostMapping(value = "/login")
     @ResponseBody
-    public ResponseEntity<Object> login(@RequestBody Usuarios usuario) {
+    public ResponseEntity<Object> login(@RequestBody Usuario usuario) {
         if(usuario.getCorreo()==null || usuario.getPassword()==null)return new ResponseEntity<>("no se envio credenciales", HttpStatus.OK);
-        User user = usersService.login(usuario.getCorreo(),usuario.getPassword());
-        if(user==null){
+        Users users = usersService.login(usuario.getCorreo(),usuario.getPassword());
+        if(users ==null){
             usuario = usuariosService.login(usuario.getCorreo(),usuario.getPassword());
             if(usuario==null){
                 return new ResponseEntity<>("no se encontro el usuario", HttpStatus.OK);
@@ -49,7 +48,7 @@ public class AuthController {
                 return new ResponseEntity<>(usuario, HttpStatus.OK);
             }
         }else {
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return new ResponseEntity<>(users, HttpStatus.OK);
         }
     }
 

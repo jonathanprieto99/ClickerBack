@@ -1,6 +1,5 @@
 package clicker.back.services;
 
-import clicker.back.entities.Usuarios;
 import clicker.back.entities.VentaSemiNuevo;
 
 import java.util.List;

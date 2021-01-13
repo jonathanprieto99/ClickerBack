@@ -15,7 +15,7 @@ public class Denuncia {
 
     @JoinColumn(name = "id_usuario")
     @ManyToOne
-    Usuarios usuario;
+    Usuario usuario;
 
     @Column(length = 1000)
     String descripcion;
@@ -36,11 +36,11 @@ public class Denuncia {
         this.autoSemiNuevo = autoSemiNuevo;
     }
 
-    public Usuarios getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuarios usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

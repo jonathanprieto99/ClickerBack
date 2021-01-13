@@ -1,4 +1,6 @@
-package clicker.back.entities;
+package clicker.back.Antiguo;
+
+import clicker.back.entities.Users;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -12,7 +14,7 @@ public class VisitasConcesionario {
 
     @JoinColumn(name = "id_user")
     @ManyToOne
-    User user;
+    Users users;
 
     @JoinColumn(name ="id_sede_concesionario")
     @ManyToOne
@@ -36,12 +38,12 @@ public class VisitasConcesionario {
         this.idVisita = idVisita;
     }
 
-    public User getUsers() {
-        return user;
+    public Users getUsers() {
+        return users;
     }
 
-    public void setUsers(User user) {
-        this.user = user;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
     public SedesConcesionarios getSedesConcesionario() {

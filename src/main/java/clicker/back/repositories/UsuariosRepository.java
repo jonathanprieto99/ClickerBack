@@ -1,11 +1,9 @@
 package clicker.back.repositories;
 
-import clicker.back.entities.Concesionarios;
-import clicker.back.entities.User;
-import clicker.back.entities.Usuarios;
+import clicker.back.entities.Usuario;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface UsuariosRepository extends PagingAndSortingRepository<Usuarios,String> {
+public interface UsuariosRepository extends PagingAndSortingRepository<Usuario,String> {
 
-    Usuarios findByCorreoAndPassword(String correo, String password);
+    Usuario findByCorreoAndPassword(String correo, String password);
 }

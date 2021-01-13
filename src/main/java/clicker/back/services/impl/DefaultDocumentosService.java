@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.Documentos;
+import clicker.back.Antiguo.Documentos;
 import clicker.back.repositories.DocumentosRepository;
 import clicker.back.services.DocumentosService;
 import org.springframework.beans.factory.annotation.Autowired;

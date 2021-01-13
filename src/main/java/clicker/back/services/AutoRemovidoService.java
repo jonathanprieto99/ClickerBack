@@ -1,16 +1,15 @@
 package clicker.back.services;
 
-import clicker.back.entities.Auto;
-import clicker.back.entities.AutoRemovido;
+import clicker.back.entities.SolicitudRemocionAuto;
 
 import java.util.List;
 
 public interface AutoRemovidoService {
-    AutoRemovido save(AutoRemovido autoRemovido);
+    SolicitudRemocionAuto save(SolicitudRemocionAuto solicitudRemocionAuto);
 
-    void delete(AutoRemovido autoRemovido);
+    void delete(SolicitudRemocionAuto solicitudRemocionAuto);
 
-    AutoRemovido getById(AutoRemovido autoRemovido);
+    SolicitudRemocionAuto getById(SolicitudRemocionAuto solicitudRemocionAuto);
 
-    List<AutoRemovido> getAll();
+    List<SolicitudRemocionAuto> getAll();
 }

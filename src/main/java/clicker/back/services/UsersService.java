@@ -1,21 +1,20 @@
 package clicker.back.services;
 
-import clicker.back.entities.User;
-import clicker.back.entities.Usuarios;
+import clicker.back.entities.Users;
 
 import java.util.List;
 
 public interface UsersService {
 
-    User save(User user);
+    Users save(Users users);
 
-    void delete(User user);
+    void delete(Users users);
 
-    User getById(User user);
+    Users getById(Users users);
 
-    List<User> getAll();
+    List<Users> getAll();
 
-    User login(String email,String password);
+    Users login(String email, String password);
 
-    User getByEmail(String email);
+    Users getByEmail(String email);
 }

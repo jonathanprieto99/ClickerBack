@@ -1,7 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.Auto;
-import clicker.back.entities.AutoRemovido;
+import clicker.back.entities.SolicitudRemocionAuto;
 import clicker.back.repositories.AutoRemovidoRepository;
 import clicker.back.services.AutoRemovidoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,22 +14,22 @@ public class DefaultAutoRemovidoService implements AutoRemovidoService {
 
 
     @Override
-    public AutoRemovido save(AutoRemovido autoRemovido) {
-        return autoRemovidoRepository.save(autoRemovido);
+    public SolicitudRemocionAuto save(SolicitudRemocionAuto solicitudRemocionAuto) {
+        return autoRemovidoRepository.save(solicitudRemocionAuto);
     }
 
     @Override
-    public void delete(AutoRemovido autoRemovido) {
-        autoRemovidoRepository.delete(autoRemovido);
+    public void delete(SolicitudRemocionAuto solicitudRemocionAuto) {
+        autoRemovidoRepository.delete(solicitudRemocionAuto);
     }
 
     @Override
-    public AutoRemovido getById(AutoRemovido autoRemovido) {
-        return autoRemovidoRepository.findById(autoRemovido.getId()).orElse(null);
+    public SolicitudRemocionAuto getById(SolicitudRemocionAuto solicitudRemocionAuto) {
+        return autoRemovidoRepository.findById(solicitudRemocionAuto.getId()).orElse(null);
     }
 
     @Override
-    public List<AutoRemovido> getAll() {
-        return (List<AutoRemovido>) autoRemovidoRepository.findAll();
+    public List<SolicitudRemocionAuto> getAll() {
+        return (List<SolicitudRemocionAuto>) autoRemovidoRepository.findAll();
     }
 }

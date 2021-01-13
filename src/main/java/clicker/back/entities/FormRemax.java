@@ -11,7 +11,7 @@ public class FormRemax {
 
     @JoinColumn(name = "id_usuario")
     @OneToOne
-    Usuarios usuarios;
+    Usuario usuario;
 
     @Column
     Boolean estado;
@@ -27,12 +27,12 @@ public class FormRemax {
         this.id = id;
     }
 
-    public Usuarios getUsuarios() {
-        return usuarios;
+    public Usuario getUsuarios() {
+        return usuario;
     }
 
-    public void setUsuarios(Usuarios usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuarios(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Boolean getEstado() {

@@ -15,7 +15,7 @@ public class InteresadoReventa {
 
     @JoinColumn(name = "id_usuario")
     @ManyToOne
-    Usuarios usuario;
+    Usuario usuario;
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class InteresadoReventa {
         this.autoSemiNuevo = autoSemiNuevo;
     }
 
-    public Usuarios getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuarios usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 }

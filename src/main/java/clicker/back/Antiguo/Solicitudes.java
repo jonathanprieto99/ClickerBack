@@ -1,5 +1,7 @@
-package clicker.back.entities;
+package clicker.back.Antiguo;
 
+
+import clicker.back.entities.Usuario;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -29,7 +31,7 @@ public class Solicitudes {
 
     @JoinColumn(name = "id_user")
     @ManyToOne
-    Usuarios usuario;
+    Usuario usuario;
 
 
     @Column
@@ -95,11 +97,11 @@ public class Solicitudes {
         this.auto = auto;
     }*/
 
-    public Usuarios getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuarios usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

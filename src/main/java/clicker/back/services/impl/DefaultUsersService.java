@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.User;
+import clicker.back.entities.Users;
 import clicker.back.repositories.UsersRepository;
 import clicker.back.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,32 +16,32 @@ public class DefaultUsersService implements UsersService {
 
 
     @Override
-    public User save(User user) {
-        return usersRepository.save(user);
+    public Users save(Users users) {
+        return usersRepository.save(users);
     }
 
     @Override
-    public void delete(User user) {
-        usersRepository.delete(user);
+    public void delete(Users users) {
+        usersRepository.delete(users);
     }
 
     @Override
-    public User getById(User user) {
-        return usersRepository.findById(user.getEmail()).orElse(null);
+    public Users getById(Users users) {
+        return usersRepository.findById(users.getEmail()).orElse(null);
     }
 
     @Override
-    public List<User> getAll() {
-        return (List<User>) usersRepository.findAll();
+    public List<Users> getAll() {
+        return (List<Users>) usersRepository.findAll();
     }
 
     @Override
-    public User login(String email, String password) {
+    public Users login(String email, String password) {
         return usersRepository.findByEmailAndPassword(email,password);
     }
 
     @Override
-    public User getByEmail(String email) {
+    public Users getByEmail(String email) {
         return usersRepository.findByEmail(email);
     }
 }

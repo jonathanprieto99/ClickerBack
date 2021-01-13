@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.OpcionesPrincipalesVenta;
+import clicker.back.Antiguo.OpcionesPrincipalesVenta;
 import clicker.back.repositories.OpcionesPrincipalesVentaRepository;
 import clicker.back.services.OpcionesPrincipalesVentaService;
 import org.springframework.beans.factory.annotation.Autowired;

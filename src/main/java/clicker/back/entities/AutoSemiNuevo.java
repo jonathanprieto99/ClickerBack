@@ -1,5 +1,7 @@
 package clicker.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -15,9 +17,10 @@ public class AutoSemiNuevo {
     @ManyToOne
     Auto auto;
 
+    @JsonIgnoreProperties("carrosPosteados")
     @JoinColumn(name = "id_usuario")
     @ManyToOne
-    Usuarios usuario;
+    Usuario usuario;
 
     @Column
     Long precioVenta;
@@ -65,7 +68,7 @@ public class AutoSemiNuevo {
     Boolean enabled;
 
     @Column
-    Integer duenoCarro;
+    Boolean duenoCarro;
 
     @Column(length = 1000)
     String video;
@@ -74,7 +77,7 @@ public class AutoSemiNuevo {
     List<String> fotos;
 
     @OneToOne(cascade = CascadeType.ALL)
-    AutoRemovido autoRemovido;
+    SolicitudRemocionAuto solicitudRemocionAuto;
 
     @OneToMany(cascade = CascadeType.ALL)
     List<InteresadoCompra> interesados;
@@ -95,11 +98,11 @@ public class AutoSemiNuevo {
         this.auto = auto;
     }
 
-    public Usuarios getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuarios usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
@@ -223,11 +226,11 @@ public class AutoSemiNuevo {
         this.enabled = enabled;
     }
 
-    public Integer getDuenoCarro() {
+    public Boolean getDuenoCarro() {
         return duenoCarro;
     }
 
-    public void setDuenoCarro(Integer duenoCarro) {
+    public void setDuenoCarro(Boolean duenoCarro) {
         this.duenoCarro = duenoCarro;
     }
 
@@ -247,12 +250,12 @@ public class AutoSemiNuevo {
         this.fotos = fotos;
     }
 
-    public AutoRemovido getAutoRemovido() {
-        return autoRemovido;
+    public SolicitudRemocionAuto getSolicitudRemocionAuto() {
+        return solicitudRemocionAuto;
     }
 
-    public void setAutoRemovido(AutoRemovido autoRemovido) {
-        this.autoRemovido = autoRemovido;
+    public void setSolicitudRemocionAuto(SolicitudRemocionAuto solicitudRemocionAuto) {
+        this.solicitudRemocionAuto = solicitudRemocionAuto;
     }
 
     public List<InteresadoCompra> getInteresados() {

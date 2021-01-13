@@ -11,11 +11,11 @@ public class SolicitudesRetiro {
 
     @JoinColumn(name = "id_usuario")
     @ManyToOne
-    Usuarios usuario;
+    Usuario usuario;
 
     @JoinColumn(name = "id_user")
     @ManyToOne
-    User admin;
+    Users admin;
 
     @Column
     Long monto;
@@ -34,19 +34,19 @@ public class SolicitudesRetiro {
         this.id = id;
     }
 
-    public Usuarios getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuarios usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public User getAdmin() {
+    public Users getAdmin() {
         return admin;
     }
 
-    public void setAdmin(User admin) {
+    public void setAdmin(Users admin) {
         this.admin = admin;
     }
 

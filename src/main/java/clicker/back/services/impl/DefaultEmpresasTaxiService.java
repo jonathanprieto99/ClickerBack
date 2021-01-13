@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.EmpresasTaxi;
+import clicker.back.Antiguo.EmpresasTaxi;
 import clicker.back.repositories.EmpresasTaxiRepository;
 import clicker.back.services.EmpresasTaxiService;
 import org.springframework.beans.factory.annotation.Autowired;

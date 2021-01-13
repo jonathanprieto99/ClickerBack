@@ -1,4 +1,6 @@
-package clicker.back.entities;
+package clicker.back.Antiguo;
+
+import clicker.back.entities.Usuario;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -12,7 +14,7 @@ public class ResultadosInfocorp {
 
     @JoinColumn(name = "id_user")
     @OneToOne
-    Usuarios user;
+    Usuario user;
 
     @Column
     Date fechaConsulta;
@@ -115,11 +117,11 @@ public class ResultadosInfocorp {
         this.idConsulta = idConsulta;
     }
 
-    public Usuarios getUser() {
+    public Usuario getUser() {
         return user;
     }
 
-    public void setUser(Usuarios user) {
+    public void setUser(Usuario user) {
         this.user = user;
     }
 

@@ -1,4 +1,6 @@
-package clicker.back.entities;
+package clicker.back.Antiguo;
+
+import clicker.back.Antiguo.Concesionarios;
 
 import javax.persistence.*;
 

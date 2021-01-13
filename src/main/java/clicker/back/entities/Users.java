@@ -3,8 +3,8 @@ package clicker.back.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "\"user\"")
-public class User {
+@Table(name = "users")
+public class Users {
 
     @Id
     @Column(unique = true,length = 100)

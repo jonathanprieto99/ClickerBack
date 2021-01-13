@@ -1,6 +1,6 @@
 package clicker.back.services.impl;
 
-import clicker.back.entities.Registrodecambio;
+import clicker.back.Antiguo.Registrodecambio;
 import clicker.back.repositories.RegistrodecambioRepository;
 import clicker.back.services.RegistrodecambioService;
 import org.springframework.beans.factory.annotation.Autowired;

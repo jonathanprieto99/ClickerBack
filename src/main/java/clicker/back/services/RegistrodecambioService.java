@@ -1,7 +1,6 @@
 package clicker.back.services;
 
-import clicker.back.entities.OpcionesPrincipalesVenta;
-import clicker.back.entities.Registrodecambio;
+import clicker.back.Antiguo.Registrodecambio;
 
 import java.util.List;
 
