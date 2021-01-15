@@ -26,8 +26,8 @@ public class DefaultEmpresasTaxiService implements EmpresasTaxiService {
     }
 
     @Override
-    public EmpresasTaxi getById(EmpresasTaxi empresasTaxi) {
-        return empresasTaxiRepository.findById(empresasTaxi.getIdEmptaxi()).orElse(null);
+    public EmpresasTaxi getById(Long id ) {
+        return empresasTaxiRepository.findById(id).orElse(null);
     }
 
     @Override

@@ -11,7 +11,7 @@ public interface SolicitudesService {
 
     void delete(Solicitudes solicitudes);
 
-    Solicitudes getById(Solicitudes solicitudes);
+    Solicitudes getById(Long id );
 
     List<Solicitudes> getAll();
 }

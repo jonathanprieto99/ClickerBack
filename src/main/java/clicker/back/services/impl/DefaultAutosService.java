@@ -25,9 +25,10 @@ public class DefaultAutosService implements AutoService {
     }
 
     @Override
-    public Auto getById(Auto autos) {
-        return autosRepository.findById(autos.getId()).orElse(null);
+    public Auto getById(Long id) {
+        return autosRepository.findById(id).orElse(null);
     }
+
 
     @Override
     public List<Auto> getAll() {

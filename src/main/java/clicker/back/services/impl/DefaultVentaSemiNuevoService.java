@@ -24,8 +24,8 @@ public class DefaultVentaSemiNuevoService implements VentaSemiNuevoService {
     }
 
     @Override
-    public VentaSemiNuevo getById(VentaSemiNuevo ventaSemiNuevo) {
-        return ventaSemiNuevoRepository.findById(ventaSemiNuevo.getId()).orElse(null);
+    public VentaSemiNuevo getById(Long id ) {
+        return ventaSemiNuevoRepository.findById(id).orElse(null);
     }
 
     @Override

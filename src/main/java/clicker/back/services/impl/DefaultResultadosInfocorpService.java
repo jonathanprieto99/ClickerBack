@@ -25,8 +25,8 @@ public class DefaultResultadosInfocorpService implements ResultadosInfocorpServi
     }
 
     @Override
-    public ResultadosInfocorp getById(ResultadosInfocorp resultadosInfocorp) {
-        return resultadosInfocorpRepository.findById(resultadosInfocorp.getIdConsulta()).orElse(null);
+    public ResultadosInfocorp getById(Long id ) {
+        return resultadosInfocorpRepository.findById(id).orElse(null);
     }
 
     @Override

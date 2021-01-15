@@ -9,7 +9,7 @@ public interface SedesConcesionariosService {
 
     void delete(SedesConcesionarios sedesConcesionarios);
 
-    SedesConcesionarios getById(SedesConcesionarios sedesConcesionarios);
+    SedesConcesionarios getById(Long id);
 
     List<SedesConcesionarios> getAll();
 }

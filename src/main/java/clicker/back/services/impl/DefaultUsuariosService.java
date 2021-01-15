@@ -32,7 +32,7 @@ public class DefaultUsuariosService implements UsuariosService {
 
     @Override
     public Usuario getById(String id ) {
-        return usuariosRepository.findById(id).orElse(null);
+        return usuariosRepository.findByCorreo(id);
     }
 
     @Override

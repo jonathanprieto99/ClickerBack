@@ -10,7 +10,7 @@ public interface RegistrodecambioService {
 
     void delete(Registrodecambio registrodecambio);
 
-    Registrodecambio getById(Registrodecambio registrodecambio);
+    Registrodecambio getById(Long id );
 
     List<Registrodecambio> getAll();
 }

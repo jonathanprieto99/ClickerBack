@@ -9,7 +9,7 @@ public interface AutoRemovidoService {
 
     void delete(SolicitudRemocionAuto solicitudRemocionAuto);
 
-    SolicitudRemocionAuto getById(SolicitudRemocionAuto solicitudRemocionAuto);
+    SolicitudRemocionAuto getById(Long id);
 
     List<SolicitudRemocionAuto> getAll();
 }

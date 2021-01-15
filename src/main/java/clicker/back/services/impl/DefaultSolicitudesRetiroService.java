@@ -23,8 +23,8 @@ public class DefaultSolicitudesRetiroService implements SolicitudesRetiroService
     }
 
     @Override
-    public SolicitudesRetiro getById(SolicitudesRetiro solicitudesRetiro) {
-        return solicitudesRetiroRepository.findById(solicitudesRetiro.getId()).orElse(null);
+    public SolicitudesRetiro getById(Long id) {
+        return solicitudesRetiroRepository.findById(id).orElse(null);
     }
 
     @Override

@@ -24,8 +24,8 @@ public class DefaultFormRemaxService implements FormRemaxService {
     }
 
     @Override
-    public FormRemax getById(FormRemax formRemax) {
-        return formRemaxRepository.findById(formRemax.getId()).orElse(null);
+    public FormRemax getById(Long id ) {
+        return formRemaxRepository.findById(id).orElse(null);
     }
 
     @Override

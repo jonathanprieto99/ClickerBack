@@ -11,7 +11,7 @@ public interface VentaSemiNuevoService {
 
     void delete(VentaSemiNuevo ventaSemiNuevo);
 
-    VentaSemiNuevo getById(VentaSemiNuevo ventaSemiNuevo);
+    VentaSemiNuevo getById(Long id);
 
     List<VentaSemiNuevo> getAll();
 

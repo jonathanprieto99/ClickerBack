@@ -11,7 +11,7 @@ public interface VisitasConcesionarioService {
 
     void delete(VisitasConcesionario visitasConcesionario);
 
-    VisitasConcesionario getById(VisitasConcesionario visitasConcesionario);
+    VisitasConcesionario getById(Long id );
 
     List<VisitasConcesionario> getAll();
 

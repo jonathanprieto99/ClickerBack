@@ -10,7 +10,7 @@ public interface ResultadosInfocorpService {
 
     void delete(ResultadosInfocorp resultadosInfocorp);
 
-    ResultadosInfocorp getById(ResultadosInfocorp resultadosInfocorp);
+    ResultadosInfocorp getById(Long id );
 
     List<ResultadosInfocorp> getAll();
 

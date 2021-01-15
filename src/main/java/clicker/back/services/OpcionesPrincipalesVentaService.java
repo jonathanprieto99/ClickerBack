@@ -10,7 +10,7 @@ public interface OpcionesPrincipalesVentaService {
 
     void delete(OpcionesPrincipalesVenta opcionesPrincipalesVenta);
 
-    OpcionesPrincipalesVenta getById(OpcionesPrincipalesVenta opcionesPrincipalesVenta);
+    OpcionesPrincipalesVenta getById(Long id);
 
     List<OpcionesPrincipalesVenta> getAll();
 }

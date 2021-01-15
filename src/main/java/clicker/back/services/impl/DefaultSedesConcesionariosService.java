@@ -25,8 +25,8 @@ public class DefaultSedesConcesionariosService implements SedesConcesionariosSer
     }
 
     @Override
-    public SedesConcesionarios getById(SedesConcesionarios sedesConcesionarios) {
-        return sedesConcesionariosRepository.findById(sedesConcesionarios.getIdSedeConcesionarios()).orElse(null);
+    public SedesConcesionarios getById(Long id ) {
+        return sedesConcesionariosRepository.findById(id).orElse(null);
     }
 
     @Override

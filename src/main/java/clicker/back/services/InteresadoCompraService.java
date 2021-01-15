@@ -10,7 +10,7 @@ public interface InteresadoCompraService {
 
     void delete(InteresadoCompra interesadoCompra);
 
-    InteresadoCompra getById(InteresadoCompra interesadoCompra);
+    InteresadoCompra getById(Long id );
 
     List<InteresadoCompra> getAll();
 }

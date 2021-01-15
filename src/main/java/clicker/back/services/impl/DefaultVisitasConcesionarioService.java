@@ -25,8 +25,8 @@ public class DefaultVisitasConcesionarioService implements VisitasConcesionarioS
     }
 
     @Override
-    public VisitasConcesionario getById(VisitasConcesionario visitasConcesionario) {
-        return visitasConcesionarioRepository.findById(visitasConcesionario.getIdVisita()).orElse(null);
+    public VisitasConcesionario getById(Long id) {
+        return visitasConcesionarioRepository.findById(id).orElse(null);
     }
 
     @Override

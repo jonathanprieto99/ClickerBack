@@ -24,8 +24,8 @@ public class DefaultInteresadoReventaService implements InteresadoReventaService
     }
 
     @Override
-    public InteresadoReventa getById(InteresadoReventa interesadoReventa) {
-        return interesadoReventaRepository.findById(interesadoReventa.getId()).orElse(null);
+    public InteresadoReventa getById(Long id) {
+        return interesadoReventaRepository.findById(id).orElse(null);
     }
 
     @Override

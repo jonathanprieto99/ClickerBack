@@ -10,7 +10,7 @@ public interface SolicitudesRetiroService {
 
     void delete(SolicitudesRetiro solicitudesRetiro);
 
-    SolicitudesRetiro getById(SolicitudesRetiro solicitudesRetiro);
+    SolicitudesRetiro getById(Long id );
 
     List<SolicitudesRetiro> getAll();
 }

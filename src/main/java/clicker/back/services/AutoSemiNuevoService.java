@@ -10,7 +10,7 @@ public interface AutoSemiNuevoService {
 
     void delete(AutoSemiNuevo autoSemiNuevo);
 
-    AutoSemiNuevo getById(AutoSemiNuevo a);
+    AutoSemiNuevo getById(Long id );
 
     List<AutoSemiNuevo> getAll();
 

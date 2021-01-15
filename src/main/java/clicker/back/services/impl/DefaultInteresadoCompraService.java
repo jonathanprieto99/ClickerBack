@@ -25,8 +25,8 @@ public class DefaultInteresadoCompraService implements InteresadoCompraService {
     }
 
     @Override
-    public InteresadoCompra getById(InteresadoCompra interesadoCompra) {
-        return interesadoCompraRepository.findById(interesadoCompra.getId()).orElse(null);
+    public InteresadoCompra getById(Long id) {
+        return interesadoCompraRepository.findById(id ).orElse(null);
     }
 
     @Override

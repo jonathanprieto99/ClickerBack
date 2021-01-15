@@ -10,7 +10,7 @@ public interface UsersService {
 
     void delete(Users users);
 
-    Users getById(Users users);
+    Users getById(String id );
 
     List<Users> getAll();
 

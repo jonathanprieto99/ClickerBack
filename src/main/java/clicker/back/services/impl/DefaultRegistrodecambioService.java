@@ -25,8 +25,8 @@ public class DefaultRegistrodecambioService implements RegistrodecambioService {
     }
 
     @Override
-    public Registrodecambio getById(Registrodecambio registrodecambio) {
-        return registrodecambioRepository.findById(registrodecambio.getId()).orElse(null);
+    public Registrodecambio getById(Long id ) {
+        return registrodecambioRepository.findById(id).orElse(null);
     }
 
     @Override

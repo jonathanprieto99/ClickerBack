@@ -25,8 +25,8 @@ public class DefaultDocumentosService implements DocumentosService {
     }
 
     @Override
-    public Documentos getById(Documentos documentos) {
-        return documentosRepository.findById(documentos.getDocumentname()).orElse(null);
+    public Documentos getById(String id ) {
+        return documentosRepository.findById(id).orElse(null);
     }
 
     @Override

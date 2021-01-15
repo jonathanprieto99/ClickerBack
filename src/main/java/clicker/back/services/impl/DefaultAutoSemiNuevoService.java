@@ -23,8 +23,8 @@ public class DefaultAutoSemiNuevoService implements AutoSemiNuevoService {
     }
 
     @Override
-    public AutoSemiNuevo getById(AutoSemiNuevo a) {
-        return null;
+    public AutoSemiNuevo getById(Long id) {
+        return autoSemiNuevoRepository.findById(id).orElse(null);
     }
 
     @Override

@@ -24,9 +24,10 @@ public class DefaultAutoRemovidoService implements AutoRemovidoService {
     }
 
     @Override
-    public SolicitudRemocionAuto getById(SolicitudRemocionAuto solicitudRemocionAuto) {
-        return autoRemovidoRepository.findById(solicitudRemocionAuto.getId()).orElse(null);
+    public SolicitudRemocionAuto getById(Long id) {
+        return autoRemovidoRepository.findById(id).orElse(null);
     }
+
 
     @Override
     public List<SolicitudRemocionAuto> getAll() {

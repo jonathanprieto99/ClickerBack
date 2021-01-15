@@ -25,8 +25,8 @@ public class DefaultOpcionesPrincipalesVenta implements OpcionesPrincipalesVenta
     }
 
     @Override
-    public OpcionesPrincipalesVenta getById(OpcionesPrincipalesVenta opcionesPrincipalesVenta) {
-        return opcionesPrincipalesVentaRepository.findById(opcionesPrincipalesVenta.getIdOpciones()).orElse(null);
+    public OpcionesPrincipalesVenta getById(Long id ) {
+        return opcionesPrincipalesVentaRepository.findById(id).orElse(null);
     }
 
     @Override

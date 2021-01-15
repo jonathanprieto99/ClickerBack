@@ -26,8 +26,8 @@ public class DefaultTiempoCompraService implements TiempoCompraService{
     }
 
     @Override
-    public TiempoCompra getById(TiempoCompra tiempoCompra) {
-        return tiempoCompraRepository.findById(tiempoCompra.getIdTiempocompra()).orElse(null);
+    public TiempoCompra getById(Long id ) {
+        return tiempoCompraRepository.findById(id).orElse(null);
     }
 
     @Override

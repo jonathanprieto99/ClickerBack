@@ -26,8 +26,8 @@ public class DefaultSolicitudesService implements SolicitudesService {
     }
 
     @Override
-    public Solicitudes getById(Solicitudes solicitudes) {
-        return solicitudesRepository.findById(solicitudes.getSolicitudesId()).orElse(null);
+    public Solicitudes getById(Long id) {
+        return solicitudesRepository.findById(id).orElse(null);
     }
 
     @Override

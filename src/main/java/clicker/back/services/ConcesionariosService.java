@@ -9,7 +9,7 @@ public interface ConcesionariosService {
 
     void delete(Concesionarios concesionarios);
 
-    Concesionarios getById(Concesionarios concesionarios);
+    Concesionarios getById(String id);
 
     List<Concesionarios> getAll();
 }

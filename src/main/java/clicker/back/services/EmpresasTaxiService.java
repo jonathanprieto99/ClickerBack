@@ -9,7 +9,7 @@ public interface EmpresasTaxiService {
 
     void delete(EmpresasTaxi empresasTaxi);
 
-    EmpresasTaxi getById(EmpresasTaxi empresasTaxi);
+    EmpresasTaxi getById(Long id);
 
     List<EmpresasTaxi> getAll();
 

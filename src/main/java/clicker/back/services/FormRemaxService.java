@@ -10,7 +10,7 @@ public interface FormRemaxService {
 
     void delete(FormRemax formRemax);
 
-    FormRemax getById(FormRemax formRemax);
+    FormRemax getById(Long id);
 
     List<FormRemax> getAll();
 }

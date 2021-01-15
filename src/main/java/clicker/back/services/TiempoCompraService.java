@@ -10,7 +10,7 @@ public interface TiempoCompraService {
 
     void delete(TiempoCompra tiempoCompra);
 
-    TiempoCompra getById(TiempoCompra tiempoCompra);
+    TiempoCompra getById(Long id);
 
     List<TiempoCompra> getAll();
 }

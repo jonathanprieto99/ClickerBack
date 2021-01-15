@@ -10,7 +10,7 @@ public interface AutoService {
 
     void delete(Auto autos);
 
-    Auto getById(Auto autos);
+    Auto getById(Long id);
 
     List<Auto> getAll();
 

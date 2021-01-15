@@ -25,9 +25,10 @@ public class DefaultConcesionariosService implements ConcesionariosService {
     }
 
     @Override
-    public Concesionarios getById(Concesionarios concesionarios) {
-        return concesionariosRepository.findById(concesionarios.getConcesionario()).orElse(null);
+    public Concesionarios getById(String id) {
+        return concesionariosRepository.findById(id).orElse(null);
     }
+
 
     @Override
     public List<Concesionarios> getAll() {

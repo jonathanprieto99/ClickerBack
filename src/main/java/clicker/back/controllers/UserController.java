@@ -27,11 +27,28 @@ public class UserController {
         if(users.getEmail()==null || users.getPassword()==null)return new ResponseEntity<>("no se envio el email", HttpStatus.BAD_REQUEST);
         Usuario usuario= usuariosService.getById(users.getEmail());
         if(usuario==null){
-            Users temp = userService.getById(users);
+            Users temp = userService.getById(users.getEmail());
             if(temp==null){
                 return new ResponseEntity<>(userService.save(users), HttpStatus.OK);
             }
         }
-        return new ResponseEntity<>("se encontro un user con ese correo", HttpStatus.BAD_REQUEST);}
+        return new ResponseEntity<>("se encontro un user con ese correo", HttpStatus.BAD_REQUEST);
+    }
 
+    @GetMapping(value = "/id")
+    @ResponseBody
+    public ResponseEntity<Object> getById(@RequestParam("id") String id ) {
+        System.out.println(id);
+        Users user = userService.getById(id);
+        if (user == null)
+            return new ResponseEntity<>(usuariosService.getById(id), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @GetMapping
+    @ResponseBody
+    public ResponseEntity<Object> getAll() {
+        return new ResponseEntity<>(usuariosService.getAll(),HttpStatus.OK);
+    }
 }

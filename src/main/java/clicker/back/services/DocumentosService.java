@@ -9,7 +9,7 @@ public interface DocumentosService {
 
     void delete(Documentos documentos);
 
-    Documentos getById(Documentos documentos);
+    Documentos getById(String id );
 
     List<Documentos> getAll();
 

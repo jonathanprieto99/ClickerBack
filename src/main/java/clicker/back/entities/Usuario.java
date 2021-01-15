@@ -59,8 +59,12 @@ public class Usuario {
     Integer cantidadCarrosAno;
 
     @JsonIgnoreProperties("usuario")
-    @OneToMany(cascade = CascadeType.ALL    )
+    @OneToMany(cascade = CascadeType.ALL)
     List<AutoSemiNuevo> carrosPosteados;
+
+    @JsonIgnoreProperties("usuario")
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Denuncia> denuncias;
 
     public String getFbId() {
         return fbId;
@@ -196,5 +200,13 @@ public class Usuario {
 
     public void setCarrosPosteados(List<AutoSemiNuevo> carrosPosteados) {
         this.carrosPosteados = carrosPosteados;
+    }
+
+    public List<Denuncia> getDenuncias() {
+        return denuncias;
+    }
+
+    public void setDenuncias(List<Denuncia> denuncias) {
+        this.denuncias = denuncias;
     }
 }
