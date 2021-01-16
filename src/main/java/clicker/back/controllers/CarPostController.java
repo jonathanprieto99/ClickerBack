@@ -42,7 +42,7 @@ public class CarPostController {
             if(cont>=user.getCantidadCarrosAno())return new ResponseEntity<>("ya agoto sus subidas anuales",  HttpStatus.LOCKED);
             else{
                 autoSemiNuevo.setValidado(false);
-                if(user.getParticular()){
+                if(user.getRol().equals("PARTICULAR")){
                     autoSemiNuevo.setComisionEmpresa(40);
                     autoSemiNuevo.setComisionUsuario(40);
                     autoSemiNuevo.setComisionVendedor(20);

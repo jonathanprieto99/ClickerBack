@@ -39,6 +39,7 @@ public class DenunciaController {
         if(denunciante == null || autoSemiNuevo == null ){
              return new ResponseEntity<>("no se encontro el usuario o el vehiculo", HttpStatus.BAD_REQUEST);
         }
+        denunciante.getDenuncias().add(denuncia);
         denuncia.setUsuario(denunciante);
         denuncia.setAutoSemiNuevo(autoSemiNuevo);
         return new ResponseEntity<>(denunciaService.save(denuncia),HttpStatus.OK);

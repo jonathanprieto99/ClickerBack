@@ -20,10 +20,7 @@ public class Users {
     Boolean permitido;
 
     @Column
-    Boolean admin;
-
-    @Column
-    Boolean superuser;
+    String rol;
 
 
     public String getEmail() {
@@ -58,19 +55,11 @@ public class Users {
         this.permitido = permitido;
     }
 
-    public Boolean getAdmin() {
-        return admin;
+    public String getRol() {
+        return rol;
     }
 
-    public void setAdmin(Boolean admin) {
-        this.admin = admin;
-    }
-
-    public Boolean getSuperuser() {
-        return superuser;
-    }
-
-    public void setSuperuser(Boolean superuser) {
-        this.superuser = superuser;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

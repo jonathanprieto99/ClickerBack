@@ -50,7 +50,7 @@ public class Usuario {
     Boolean enabled;
 
     @Column
-    Boolean particular;
+    String rol;
 
     @Column
     Long balance;
@@ -170,12 +170,12 @@ public class Usuario {
         this.enabled = enabled;
     }
 
-    public Boolean getParticular() {
-        return particular;
+    public String getRol() {
+        return rol;
     }
 
-    public void setParticular(Boolean particular) {
-        this.particular = particular;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public Long getBalance() {
