@@ -66,6 +66,18 @@ public class Usuario {
     @OneToMany(cascade = CascadeType.ALL)
     List<Denuncia> denuncias;
 
+    @JsonIgnoreProperties("usuario")
+    @OneToMany(cascade = CascadeType.ALL)
+    List<InteresadoReventa> interesadoReventas;
+
+    public List<InteresadoReventa> getInteresadoReventas() {
+        return interesadoReventas;
+    }
+
+    public void setInteresadoReventas(List<InteresadoReventa> interesadoReventas) {
+        this.interesadoReventas = interesadoReventas;
+    }
+
     public String getFbId() {
         return fbId;
     }

@@ -17,7 +17,7 @@ public class AutoSemiNuevo {
     @ManyToOne
     Auto auto;
 
-    @JsonIgnoreProperties({"carrosPosteados","denuncias"})
+    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas"})
     @JoinColumn(name = "id_usuario")
     @ManyToOne
     Usuario usuario;
@@ -79,8 +79,14 @@ public class AutoSemiNuevo {
     @OneToOne(cascade = CascadeType.ALL)
     SolicitudRemocionAuto solicitudRemocionAuto;
 
+    @JsonIgnoreProperties({"autoSemiNuevo"})
     @OneToMany(cascade = CascadeType.ALL)
-    List<InteresadoCompra> interesados;
+    List<InteresadoCompra> interesadoCompras;
+
+    @JsonIgnoreProperties({"autoSemiNuevo"})
+    @OneToMany(cascade = CascadeType.ALL)
+    List<InteresadoReventa> interesadoReventas;
+
 
     public Long getId() {
         return id;
@@ -258,11 +264,19 @@ public class AutoSemiNuevo {
         this.solicitudRemocionAuto = solicitudRemocionAuto;
     }
 
-    public List<InteresadoCompra> getInteresados() {
-        return interesados;
+    public List<InteresadoCompra> getInteresadoCompras() {
+        return interesadoCompras;
     }
 
-    public void setInteresados(List<InteresadoCompra> interesados) {
-        this.interesados = interesados;
+    public void setInteresadoCompras(List<InteresadoCompra> interesadoCompras) {
+        this.interesadoCompras = interesadoCompras;
+    }
+
+    public List<InteresadoReventa> getInteresadoReventas() {
+        return interesadoReventas;
+    }
+
+    public void setInteresadoReventas(List<InteresadoReventa> interesadoReventas) {
+        this.interesadoReventas = interesadoReventas;
     }
 }

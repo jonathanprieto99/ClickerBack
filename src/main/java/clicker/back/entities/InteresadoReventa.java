@@ -1,5 +1,7 @@
 package clicker.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 @Entity
 public class InteresadoReventa {
@@ -13,6 +15,7 @@ public class InteresadoReventa {
     @ManyToOne
     AutoSemiNuevo autoSemiNuevo;
 
+    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas"})
     @JoinColumn(name = "id_usuario")
     @ManyToOne
     Usuario usuario;

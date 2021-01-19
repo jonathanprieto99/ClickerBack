@@ -3,7 +3,10 @@ package clicker.back.controllers;
 
 import clicker.back.Setup;
 import clicker.back.entities.AutoSemiNuevo;
+import clicker.back.entities.InteresadoCompra;
+import clicker.back.entities.InteresadoReventa;
 import clicker.back.entities.Usuario;
+import clicker.back.services.AutoSemiNuevoService;
 import clicker.back.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +24,9 @@ import java.util.List;
 public class CarPostController {
     @Autowired
     UsuariosService usuariosService;
+
+    @Autowired
+    AutoSemiNuevoService autoSemiNuevoService;
 
     @PostMapping
     @ResponseBody
@@ -64,6 +70,51 @@ public class CarPostController {
 
     }
 
+    @PostMapping(value = "/interesadosCompra")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<Object> intCompra(@RequestBody InteresadoCompra interesadoCompra) {
+        AutoSemiNuevo autoSemiNuevo = interesadoCompra.getAutoSemiNuevo();
+        if(autoSemiNuevo==null || autoSemiNuevo.getId()==null) return new ResponseEntity<>("No se envio el auto por el cual esta interesado",HttpStatus.BAD_REQUEST);
+        autoSemiNuevo = autoSemiNuevoService.getById(autoSemiNuevo.getId());
+        if(autoSemiNuevo == null) return new ResponseEntity<>("no se encontro el auto",HttpStatus.NOT_FOUND);
+        interesadoCompra.setId(null);
+        autoSemiNuevo.getInteresadoCompras().add(interesadoCompra);
+        interesadoCompra.setAutoSemiNuevo(autoSemiNuevo);
+        try{
+            return new ResponseEntity<>("se realizo correctamente el post",HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("se encontro algun error",HttpStatus.BAD_REQUEST);
+        }
+    }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Object> getById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(autoSemiNuevoService.getById(id),HttpStatus.OK);
+    }
 
+    @PostMapping(value = "/interesadosVenta")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<Object> intVenta(@RequestBody InteresadoReventa interesadoReventa) {
+        AutoSemiNuevo autoSemiNuevo = interesadoReventa.getAutoSemiNuevo();
+        if(autoSemiNuevo==null || autoSemiNuevo.getId()==null) return new ResponseEntity<>("No se envio el auto por el cual esta interesado",HttpStatus.BAD_REQUEST);
+        autoSemiNuevo = autoSemiNuevoService.getById(autoSemiNuevo.getId());
+        if(autoSemiNuevo == null) return new ResponseEntity<>("no se encontro el auto",HttpStatus.NOT_FOUND);
+
+        Usuario usuario = interesadoReventa.getUsuario();
+        if(usuario==null || usuario.getCorreo()==null) return new ResponseEntity<>("No se envio el usuario interesado",HttpStatus.BAD_REQUEST);
+        usuario = usuariosService.getById(usuario.getCorreo());
+        if(usuario == null) return new ResponseEntity<>("no se encontro el usuario en la base de datos",HttpStatus.NOT_FOUND);
+
+        interesadoReventa.setId(null);
+        autoSemiNuevo.getInteresadoReventas().add(interesadoReventa);
+        interesadoReventa.setUsuario(usuario);
+        interesadoReventa.setAutoSemiNuevo(autoSemiNuevo);
+        try{
+            return new ResponseEntity<>("se realizo correctamente el post",HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("se encontro algun error",HttpStatus.BAD_REQUEST);
+        }
+    }
 }

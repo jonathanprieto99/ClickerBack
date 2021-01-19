@@ -1,0 +1,1 @@
+web: env target/back-0.0.1.jar
