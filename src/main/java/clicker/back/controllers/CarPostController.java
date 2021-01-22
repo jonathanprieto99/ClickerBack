@@ -2,12 +2,10 @@ package clicker.back.controllers;
 
 
 import clicker.back.Setup;
-import clicker.back.entities.AutoSemiNuevo;
-import clicker.back.entities.InteresadoCompra;
-import clicker.back.entities.InteresadoReventa;
-import clicker.back.entities.Usuario;
+import clicker.back.entities.*;
 import clicker.back.services.AutoSemiNuevoService;
 import clicker.back.services.UsuariosService;
+import clicker.back.services.VentaSemiNuevoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +25,9 @@ public class CarPostController {
 
     @Autowired
     AutoSemiNuevoService autoSemiNuevoService;
+
+    @Autowired
+    VentaSemiNuevoService ventaSemiNuevoService;
 
     @PostMapping
     @ResponseBody
@@ -117,4 +118,25 @@ public class CarPostController {
             return new ResponseEntity<>("se encontro algun error",HttpStatus.BAD_REQUEST);
         }
     }
+
+        @PostMapping(value = "/venta")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<Object> ventaSemiNuevo(@RequestBody VentaSemiNuevo ventaSemiNuevo){
+        if(ventaSemiNuevo.getAutoSemiNuevo()==null || ventaSemiNuevo.getAutoSemiNuevo().getId()==null)return new ResponseEntity<>("no se mando el auto",HttpStatus.BAD_REQUEST);
+        ventaSemiNuevo.setAutoSemiNuevo(autoSemiNuevoService.getById(ventaSemiNuevo.getAutoSemiNuevo().getId()));
+        if(ventaSemiNuevo.getAutoSemiNuevo()==null)return new ResponseEntity<>("no se encontro el auto con ese id",HttpStatus.BAD_REQUEST);
+        if(ventaSemiNuevo.getVendedor()==null)return new ResponseEntity<>("no se mando el vendedor",HttpStatus.BAD_REQUEST);
+        ventaSemiNuevo.setVendedor(usuariosService.getById(ventaSemiNuevo.getVendedor().getCorreo()));
+        if(ventaSemiNuevo.getVendedor()==null)return new ResponseEntity<>("no se encontro el vendedor con ese id",HttpStatus.BAD_REQUEST);
+        ventaSemiNuevo.getAutoSemiNuevo().setComprado(true);
+        try{
+            return new ResponseEntity<>(ventaSemiNuevoService.save(ventaSemiNuevo),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("fallo del servidor",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+
+    }
+
 }

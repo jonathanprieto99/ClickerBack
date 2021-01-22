@@ -1,5 +1,7 @@
 package clicker.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,9 +13,10 @@ public class VentaSemiNuevo {
     Long id;
 
     @JoinColumn(name = "id_auto_semi_nuevo")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     AutoSemiNuevo autoSemiNuevo;
 
+    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas"})
     @JoinColumn(name = "id_vendedor")
     @ManyToOne
     Usuario vendedor;
@@ -22,10 +25,10 @@ public class VentaSemiNuevo {
     Date fecha;
 
     @Column
-    String ciudad_compra;
+    String ciudadCompra;
 
     @Column
-    String link_qr;
+    String linkQr;
 
     @Column
     Boolean pagado;
@@ -62,20 +65,20 @@ public class VentaSemiNuevo {
         this.fecha = fecha;
     }
 
-    public String getCiudad_compra() {
-        return ciudad_compra;
+    public String getCiudadCompra() {
+        return ciudadCompra;
     }
 
-    public void setCiudad_compra(String ciudad_compra) {
-        this.ciudad_compra = ciudad_compra;
+    public void setCiudadCompra(String ciudadCompra) {
+        this.ciudadCompra = ciudadCompra;
     }
 
-    public String getLink_qr() {
-        return link_qr;
+    public String getLinkQr() {
+        return linkQr;
     }
 
-    public void setLink_qr(String link_qr) {
-        this.link_qr = link_qr;
+    public void setLinkQr(String linkQr) {
+        this.linkQr = linkQr;
     }
 
     public Boolean getPagado() {
