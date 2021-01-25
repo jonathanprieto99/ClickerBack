@@ -4,6 +4,7 @@ import clicker.back.entities.AutoSemiNuevo;
 import clicker.back.repositories.AutoSemiNuevoRepository;
 import clicker.back.services.AutoSemiNuevoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class DefaultAutoSemiNuevoService implements AutoSemiNuevoService {
 
     @Override
     public AutoSemiNuevo save(AutoSemiNuevo autoSemiNuevo) {
-        return null;
+        return autoSemiNuevoRepository.save(autoSemiNuevo);
     }
 
     @Override
@@ -30,5 +31,10 @@ public class DefaultAutoSemiNuevoService implements AutoSemiNuevoService {
     @Override
     public List<AutoSemiNuevo> getAll() {
         return null;
+    }
+
+    @Override
+    public List<AutoSemiNuevo> getAllEnabled(Boolean enabled,Boolean comprado,Boolean validado, Pageable pageable) {
+        return autoSemiNuevoRepository.findAllByEnabledAndValidadoAndComprado(enabled,comprado,validado,pageable).getContent();
     }
 }

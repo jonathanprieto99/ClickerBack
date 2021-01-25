@@ -70,6 +70,18 @@ public class Usuario {
     @OneToMany(cascade = CascadeType.ALL)
     List<InteresadoReventa> interesadoReventas;
 
+    @JsonIgnoreProperties({"usuario","admin"})
+    @OneToMany(cascade = CascadeType.ALL)
+    List<SolicitudesRetiro> solicitudesRetiros;
+
+    @JsonIgnoreProperties("usuario")
+    @OneToOne(cascade = CascadeType.ALL)
+    FormRemax formRemax;
+
+    @JsonIgnoreProperties({"usuario","admin"})
+    @OneToMany(cascade = CascadeType.ALL)
+    List<SolicitudesRetiro> solicitudesRetiro;
+
     public List<InteresadoReventa> getInteresadoReventas() {
         return interesadoReventas;
     }
@@ -220,5 +232,29 @@ public class Usuario {
 
     public void setDenuncias(List<Denuncia> denuncias) {
         this.denuncias = denuncias;
+    }
+
+    public List<SolicitudesRetiro> getSolicitudesRetiros() {
+        return solicitudesRetiros;
+    }
+
+    public void setSolicitudesRetiros(List<SolicitudesRetiro> solicitudesRetiros) {
+        this.solicitudesRetiros = solicitudesRetiros;
+    }
+
+    public FormRemax getFormRemax() {
+        return formRemax;
+    }
+
+    public void setFormRemax(FormRemax formRemax) {
+        this.formRemax = formRemax;
+    }
+
+    public void setSolicitudesRetiro(List<SolicitudesRetiro> solicitudesRetiro) {
+        this.solicitudesRetiro = solicitudesRetiro;
+    }
+
+    public List<SolicitudesRetiro> getSolicitudesRetiro() {
+        return solicitudesRetiro;
     }
 }

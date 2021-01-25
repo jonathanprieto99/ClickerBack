@@ -4,9 +4,14 @@ package clicker.back.controllers;
 import clicker.back.Setup;
 import clicker.back.entities.*;
 import clicker.back.services.AutoSemiNuevoService;
+import clicker.back.services.AutoService;
 import clicker.back.services.UsuariosService;
 import clicker.back.services.VentaSemiNuevoService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,13 +34,22 @@ public class CarPostController {
     @Autowired
     VentaSemiNuevoService ventaSemiNuevoService;
 
+    @Autowired
+    AutoService autoService;
+
     @PostMapping
     @ResponseBody
     @Transactional
     public ResponseEntity<Object> post(@RequestBody AutoSemiNuevo autoSemiNuevo){
+        if(autoSemiNuevo.getAuto()==null || autoSemiNuevo.getAuto().getId()==null)
+            return new ResponseEntity<>("no se envio el auto",HttpStatus.BAD_REQUEST);
+        autoSemiNuevo.setAuto(autoService.getById(autoSemiNuevo.getAuto().getId()));
+        if(autoSemiNuevo.getAuto()==null)return new ResponseEntity<>("no se encontro el auto",HttpStatus.BAD_REQUEST);
+        if(autoSemiNuevo.getUsuario()==null || autoSemiNuevo.getUsuario().getCorreo()==null)
+            return new ResponseEntity<>("no se envio un usuario",HttpStatus.BAD_REQUEST);
         Usuario user = usuariosService.getById(autoSemiNuevo.getUsuario().getCorreo());
         if(user == null){
-            return new ResponseEntity<>("no se encontro el id de este usuario",  HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("no se encontro el usuario con ese id",  HttpStatus.BAD_REQUEST);
         }else{
             Calendar c1 = Calendar.getInstance();
             Calendar c2 = Calendar.getInstance();
@@ -65,7 +79,11 @@ public class CarPostController {
             autoSemiNuevo.setEnabled(true);
             autoSemiNuevo.setFechaPublicacion(new Date());
             autos.add(autoSemiNuevo);
-            return new ResponseEntity<>(usuariosService.save(user),HttpStatus.ACCEPTED);
+            try{
+                return new ResponseEntity<>(usuariosService.save(user),HttpStatus.ACCEPTED);
+            }catch (Exception e ){
+                return new ResponseEntity<>("fallo",HttpStatus.INTERNAL_SERVER_ERROR);
+            }
 
         }
 
@@ -75,13 +93,12 @@ public class CarPostController {
     @ResponseBody
     @Transactional
     public ResponseEntity<Object> intCompra(@RequestBody InteresadoCompra interesadoCompra) {
-        AutoSemiNuevo autoSemiNuevo = interesadoCompra.getAutoSemiNuevo();
-        if(autoSemiNuevo==null || autoSemiNuevo.getId()==null) return new ResponseEntity<>("No se envio el auto por el cual esta interesado",HttpStatus.BAD_REQUEST);
-        autoSemiNuevo = autoSemiNuevoService.getById(autoSemiNuevo.getId());
-        if(autoSemiNuevo == null) return new ResponseEntity<>("no se encontro el auto",HttpStatus.NOT_FOUND);
+        if(interesadoCompra.getAutoSemiNuevo()==null || interesadoCompra.getAutoSemiNuevo().getId()==null) return new ResponseEntity<>("No se envio el auto por el cual esta interesado",HttpStatus.BAD_REQUEST);
+        interesadoCompra.setAutoSemiNuevo(autoSemiNuevoService.getById(interesadoCompra.getAutoSemiNuevo().getId()));
+        if(interesadoCompra.getAutoSemiNuevo() == null) return new ResponseEntity<>("no se encontro el auto",HttpStatus.NOT_FOUND);
         interesadoCompra.setId(null);
-        autoSemiNuevo.getInteresadoCompras().add(interesadoCompra);
-        interesadoCompra.setAutoSemiNuevo(autoSemiNuevo);
+        interesadoCompra.getAutoSemiNuevo().getInteresadoCompras().add(interesadoCompra);
+        interesadoCompra.setAutoSemiNuevo(interesadoCompra.getAutoSemiNuevo());
         try{
             return new ResponseEntity<>("se realizo correctamente el post",HttpStatus.OK);
         }catch (Exception e){
@@ -98,20 +115,17 @@ public class CarPostController {
     @ResponseBody
     @Transactional
     public ResponseEntity<Object> intVenta(@RequestBody InteresadoReventa interesadoReventa) {
-        AutoSemiNuevo autoSemiNuevo = interesadoReventa.getAutoSemiNuevo();
-        if(autoSemiNuevo==null || autoSemiNuevo.getId()==null) return new ResponseEntity<>("No se envio el auto por el cual esta interesado",HttpStatus.BAD_REQUEST);
-        autoSemiNuevo = autoSemiNuevoService.getById(autoSemiNuevo.getId());
-        if(autoSemiNuevo == null) return new ResponseEntity<>("no se encontro el auto",HttpStatus.NOT_FOUND);
+        if(interesadoReventa.getAutoSemiNuevo()==null || interesadoReventa.getAutoSemiNuevo().getId()==null) return new ResponseEntity<>("No se envio el auto por el cual esta interesado",HttpStatus.BAD_REQUEST);
+        interesadoReventa.setAutoSemiNuevo(autoSemiNuevoService.getById(interesadoReventa.getAutoSemiNuevo().getId()));
+        if(interesadoReventa.getAutoSemiNuevo() == null) return new ResponseEntity<>("no se encontro el auto",HttpStatus.NOT_FOUND);
 
-        Usuario usuario = interesadoReventa.getUsuario();
-        if(usuario==null || usuario.getCorreo()==null) return new ResponseEntity<>("No se envio el usuario interesado",HttpStatus.BAD_REQUEST);
-        usuario = usuariosService.getById(usuario.getCorreo());
-        if(usuario == null) return new ResponseEntity<>("no se encontro el usuario en la base de datos",HttpStatus.NOT_FOUND);
-
+        if(interesadoReventa.getUsuario()==null || interesadoReventa.getUsuario().getCorreo()==null) return new ResponseEntity<>("No se envio el usuario interesado",HttpStatus.BAD_REQUEST);
+        interesadoReventa.setUsuario(usuariosService.getById(interesadoReventa.getUsuario().getCorreo()));
+        if(interesadoReventa.getUsuario() == null) return new ResponseEntity<>("no se encontro el usuario en la base de datos",HttpStatus.NOT_FOUND);
         interesadoReventa.setId(null);
-        autoSemiNuevo.getInteresadoReventas().add(interesadoReventa);
-        interesadoReventa.setUsuario(usuario);
-        interesadoReventa.setAutoSemiNuevo(autoSemiNuevo);
+        interesadoReventa.getAutoSemiNuevo().getInteresadoReventas().add(interesadoReventa);
+        interesadoReventa.setUsuario(interesadoReventa.getUsuario());
+        interesadoReventa.setAutoSemiNuevo(interesadoReventa.getAutoSemiNuevo());
         try{
             return new ResponseEntity<>("se realizo correctamente el post",HttpStatus.OK);
         }catch (Exception e){
@@ -119,10 +133,11 @@ public class CarPostController {
         }
     }
 
-        @PostMapping(value = "/venta")
+    @PostMapping(value = "/venta")
     @ResponseBody
     @Transactional
     public ResponseEntity<Object> ventaSemiNuevo(@RequestBody VentaSemiNuevo ventaSemiNuevo){
+        //TODO balance total
         if(ventaSemiNuevo.getAutoSemiNuevo()==null || ventaSemiNuevo.getAutoSemiNuevo().getId()==null)return new ResponseEntity<>("no se mando el auto",HttpStatus.BAD_REQUEST);
         ventaSemiNuevo.setAutoSemiNuevo(autoSemiNuevoService.getById(ventaSemiNuevo.getAutoSemiNuevo().getId()));
         if(ventaSemiNuevo.getAutoSemiNuevo()==null)return new ResponseEntity<>("no se encontro el auto con ese id",HttpStatus.BAD_REQUEST);
@@ -135,8 +150,32 @@ public class CarPostController {
         }catch (Exception e){
             return new ResponseEntity<>("fallo del servidor",HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-
     }
 
+    @GetMapping(value = "/enabled/{pageId}")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<Object> getEnabled(@PathVariable("pageId") Integer pageId){
+        try{
+            return new ResponseEntity<>(autoSemiNuevoService.getAllEnabled(true,true,false,PageRequest.of(pageId,10, Sort.by("fechaPublicacion").descending())),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("fallo",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping(value = "/validate/{id}")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<Object> modify(@PathVariable("id")Long id ){
+        AutoSemiNuevo autoSemiNuevo = autoSemiNuevoService.getById(id);
+        if(autoSemiNuevo==null)return new ResponseEntity<>("no se encontro el post con ese id",HttpStatus.BAD_REQUEST);
+        autoSemiNuevo.setValidado(true);
+        try{
+            System.out.println(autoSemiNuevo.getValidado().toString());
+
+            return new ResponseEntity<>(autoSemiNuevoService.save(autoSemiNuevo),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("fallo",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -16,7 +16,7 @@ public class VentaSemiNuevo {
     @OneToOne(cascade = CascadeType.ALL)
     AutoSemiNuevo autoSemiNuevo;
 
-    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas"})
+    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas","solicitudesRetiros"})
     @JoinColumn(name = "id_vendedor")
     @ManyToOne
     Usuario vendedor;

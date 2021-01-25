@@ -1,5 +1,7 @@
 package clicker.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class FormRemax {
     @Id
     Long id;
 
+    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas","solicitudesRetiros","formRemax"})
     @JoinColumn(name = "id_usuario")
     @OneToOne
     Usuario usuario;
@@ -27,11 +30,11 @@ public class FormRemax {
         this.id = id;
     }
 
-    public Usuario getUsuarios() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuarios(Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

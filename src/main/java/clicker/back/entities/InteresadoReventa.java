@@ -15,7 +15,7 @@ public class InteresadoReventa {
     @ManyToOne
     AutoSemiNuevo autoSemiNuevo;
 
-    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas"})
+    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas","solicitudesRetiros","formRemax"})
     @JoinColumn(name = "id_usuario")
     @ManyToOne
     Usuario usuario;

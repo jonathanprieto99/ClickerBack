@@ -1,6 +1,7 @@
 package clicker.back.controllers;
 
 import clicker.back.Setup;
+import clicker.back.entities.FormRemax;
 import clicker.back.entities.Users;
 import clicker.back.entities.Usuario;
 import clicker.back.services.UsersService;
@@ -51,4 +52,16 @@ public class UserController {
     public ResponseEntity<Object> getAll() {
         return new ResponseEntity<>(usuariosService.getAll(),HttpStatus.OK);
     }
+
+    @PostMapping(value = "/remax")
+    @ResponseBody
+    public ResponseEntity<Object> postFormRemax(@RequestBody FormRemax formRemax){
+        if(formRemax.getUsuario()==null || formRemax.getUsuario().getCorreo()==null)return new ResponseEntity<>("no se envio el usuario",HttpStatus.BAD_REQUEST);
+        formRemax.setUsuario(usuariosService.getById(formRemax.getUsuario().getCorreo()));
+        if(formRemax.getUsuario()==null) return new ResponseEntity<>("no se encontro el usuario",HttpStatus.BAD_REQUEST);
+        if(!formRemax.getUsuario().getRol().equals("REMAX"))return new ResponseEntity<>("el usuario no es un tipo REMAX, no se le debe hacer un forms",HttpStatus.BAD_REQUEST);
+        formRemax.getUsuario().setFormRemax(formRemax);
+        return new ResponseEntity<>(usuariosService.save(formRemax.getUsuario()),HttpStatus.OK);
+    }
+
 }

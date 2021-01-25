@@ -11,7 +11,7 @@ public class InteresadoCompra {
     @Id
     Long id;
 
-    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas"})
+    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas","solicitudesRetiros","formRemax"})
     @JoinColumn(name = "id_auto_semi_nuevo")
     @ManyToOne
     AutoSemiNuevo autoSemiNuevo;

@@ -1,5 +1,7 @@
 package clicker.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class SolicitudesRetiro {
     @Id
     Long id;
 
+    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas","solicitudesRetiros","formRemax"})
     @JoinColumn(name = "id_usuario")
     @ManyToOne
     Usuario usuario;

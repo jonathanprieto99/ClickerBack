@@ -28,6 +28,12 @@ public class AuthController {
         if(users ==null){
             Usuario temp = usuariosService.getById(usuario.getCorreo());
             if(temp==null){
+                if(usuario.getRol().equals("REMAX")) {
+                    usuario.setEnabled(false);
+                    usuario.getFormRemax().setUsuario(usuario);
+                }else {
+                    usuario.setFormRemax(null);
+                }
                 return new ResponseEntity<>(usuariosService.save(usuario), HttpStatus.OK);
             }
         }
