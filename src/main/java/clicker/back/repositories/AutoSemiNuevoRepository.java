@@ -8,4 +8,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface AutoSemiNuevoRepository extends PagingAndSortingRepository<AutoSemiNuevo,Long> {
 
     Page<AutoSemiNuevo> findAllByEnabledAndValidadoAndComprado(Boolean enabled,Boolean validado,Boolean comprado, Pageable pageable);
+
+    Long countAllByEnabledAndValidadoAndComprado(Boolean enabled,Boolean validado,Boolean comprado);
 }

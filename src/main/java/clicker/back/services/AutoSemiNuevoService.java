@@ -18,4 +18,5 @@ public interface AutoSemiNuevoService {
 
     List<AutoSemiNuevo> getAllEnabled(Boolean enabled,Boolean validado,Boolean comprado, Pageable pageable);
 
+    Long getPages(Boolean enabled, Boolean validado, Boolean comprado);
 }

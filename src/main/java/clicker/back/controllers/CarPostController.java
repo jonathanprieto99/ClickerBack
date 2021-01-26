@@ -163,6 +163,17 @@ public class CarPostController {
         }
     }
 
+    @GetMapping(value = "/enabled/count")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<Object> getEnabledCount(){
+        try{
+            return new ResponseEntity<>(autoSemiNuevoService.getPages(true,true,false),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("fallo",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PutMapping(value = "/validate/{id}")
     @ResponseBody
     @Transactional
