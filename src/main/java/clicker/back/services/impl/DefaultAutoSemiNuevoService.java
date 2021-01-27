@@ -44,5 +44,8 @@ public class DefaultAutoSemiNuevoService implements AutoSemiNuevoService {
         return autoSemiNuevoRepository.countAllByEnabledAndValidadoAndComprado(enabled,validado,comprado);
     }
 
-
+    @Override
+    public List<AutoSemiNuevo> getAllEnabled(Boolean enabled, Boolean validado, Boolean comprado) {
+        return autoSemiNuevoRepository.findAllByEnabledAndValidadoAndComprado(enabled,validado,comprado);
+    }
 }

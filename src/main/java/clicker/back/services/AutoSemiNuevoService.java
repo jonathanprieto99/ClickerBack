@@ -1,5 +1,6 @@
 package clicker.back.services;
 
+import clicker.back.entities.Auto;
 import clicker.back.entities.AutoSemiNuevo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,4 +20,6 @@ public interface AutoSemiNuevoService {
     List<AutoSemiNuevo> getAllEnabled(Boolean enabled,Boolean validado,Boolean comprado, Pageable pageable);
 
     Long getPages(Boolean enabled, Boolean validado, Boolean comprado);
+
+    List<AutoSemiNuevo> getAllEnabled(Boolean enabled,Boolean validado,Boolean comprado);
 }

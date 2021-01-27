@@ -152,10 +152,22 @@ public class CarPostController {
         }
     }
 
+    @GetMapping(value = "/enabled")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<Object> getEnabled(){
+        try{
+            return new ResponseEntity<>(autoSemiNuevoService.getAllEnabled(true,true,false),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("fallo",HttpStatus.OK);
+        }
+    }
+
+
     @GetMapping(value = "/enabled/{pageId}")
     @ResponseBody
     @Transactional
-    public ResponseEntity<Object> getEnabled(@PathVariable("pageId") Integer pageId){
+    public ResponseEntity<Object> getEnabledPaginated(@PathVariable("pageId") Integer pageId){
         try{
             return new ResponseEntity<>(autoSemiNuevoService.getAllEnabled(true,true,false,PageRequest.of(pageId,10, Sort.by("fechaPublicacion").descending())),HttpStatus.OK);
         }catch (Exception e){
