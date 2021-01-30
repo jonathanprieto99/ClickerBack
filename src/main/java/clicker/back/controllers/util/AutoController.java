@@ -18,7 +18,19 @@ public class AutoController {
     @PostMapping
     @ResponseBody
     public ResponseEntity<Object> save(@RequestBody Auto auto){
-        return new ResponseEntity<>(autoService.save(auto), HttpStatus.ACCEPTED);
+        try{
+            return new ResponseEntity<>(autoService.save(auto), HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>("fallo",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-
+    @GetMapping(value = "/count")
+    @ResponseBody
+    public ResponseEntity<Object> countByMarca(){
+        try{
+            return new ResponseEntity<>(autoService.getCountMarca(),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("fallo", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

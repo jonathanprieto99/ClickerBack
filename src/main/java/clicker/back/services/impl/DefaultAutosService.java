@@ -34,4 +34,9 @@ public class DefaultAutosService implements AutoService {
     public List<Auto> getAll() {
         return (List<Auto>) autosRepository.findAll();
     }
+
+    @Override
+    public Long getCountMarca() {
+        return autosRepository.getmarcas();
+    }
 }

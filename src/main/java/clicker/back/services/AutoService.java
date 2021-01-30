@@ -14,4 +14,6 @@ public interface AutoService {
 
     List<Auto> getAll();
 
+    Long getCountMarca();
+
 }
