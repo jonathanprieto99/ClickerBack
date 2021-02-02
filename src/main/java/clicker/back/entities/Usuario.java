@@ -2,6 +2,7 @@ package clicker.back.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 import javax.persistence.*;
 import java.util.List;
@@ -81,6 +82,18 @@ public class Usuario {
     @JsonIgnoreProperties({"usuario","admin"})
     @OneToMany(cascade = CascadeType.ALL)
     List<SolicitudesRetiro> solicitudesRetiro;
+
+
+    Long numeroDenuncias;
+
+
+    public Long getNumeroDenuncias() {
+        return numeroDenuncias;
+    }
+
+    public void setNumeroDenuncias(Long numeroDenuncias) {
+        this.numeroDenuncias = numeroDenuncias;
+    }
 
     public List<InteresadoReventa> getInteresadoReventas() {
         return interesadoReventas;

@@ -22,4 +22,6 @@ public interface AutoSemiNuevoService {
     Long getPages(Boolean enabled, Boolean validado, Boolean comprado);
 
     List<AutoSemiNuevo> getAllEnabled(Boolean enabled,Boolean validado,Boolean comprado);
+
+    List<AutoSemiNuevo> getAllFromIdList(List<Long> ids);
 }

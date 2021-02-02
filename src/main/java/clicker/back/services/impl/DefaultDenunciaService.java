@@ -1,6 +1,8 @@
 package clicker.back.services.impl;
 
+import clicker.back.entities.AutoSemiNuevo;
 import clicker.back.entities.Denuncia;
+import clicker.back.entities.Usuario;
 import clicker.back.repositories.DenunciaRepository;
 import clicker.back.services.DenunciaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +34,15 @@ public class DefaultDenunciaService implements DenunciaService {
     @Override
     public List<Denuncia> getAll() {
         return (List<Denuncia>) denunciaRepository.findAll();
+    }
+
+    @Override
+    public List<Long> getIdsAutosDenunciados() {
+        return denunciaRepository.getIdsFromAutosDenunciados();
+    }
+
+    @Override
+    public Denuncia getByAutoAndUsuario(AutoSemiNuevo autoSemiNuevo, Usuario usuario) {
+        return denunciaRepository.getByAutoSemiNuevoAndUsuario(autoSemiNuevo,usuario);
     }
 }

@@ -48,4 +48,9 @@ public class DefaultAutoSemiNuevoService implements AutoSemiNuevoService {
     public List<AutoSemiNuevo> getAllEnabled(Boolean enabled, Boolean validado, Boolean comprado) {
         return autoSemiNuevoRepository.findAllByEnabledAndValidadoAndComprado(enabled,validado,comprado);
     }
+
+    @Override
+    public List<AutoSemiNuevo> getAllFromIdList(List<Long> ids) {
+        return (List<AutoSemiNuevo>) autoSemiNuevoRepository.findAllById(ids);
+    }
 }

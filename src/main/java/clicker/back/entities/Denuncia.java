@@ -11,12 +11,12 @@ public class Denuncia {
     @Id
     Long id;
 
-    @JsonIgnoreProperties
+    @JsonIgnoreProperties({"denuncias","interesadoReventas","interesadoCompras","solicitudRemocionAuto"})
     @JoinColumn(name = "id_auto_semi_nuevo")
     @ManyToOne
     AutoSemiNuevo autoSemiNuevo;
 
-    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas","solicitudesRetiros","formRemax"})
+    @JsonIgnoreProperties({"carrosPosteados","denuncias","interesadoReventas","solicitudesRetiro","formRemax"})
     @JoinColumn(name = "id_usuario")
     @ManyToOne
     Usuario usuario;

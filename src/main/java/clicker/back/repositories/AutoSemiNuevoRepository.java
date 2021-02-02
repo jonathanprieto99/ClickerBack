@@ -15,4 +15,5 @@ public interface AutoSemiNuevoRepository extends PagingAndSortingRepository<Auto
     Long countAllByEnabledAndValidadoAndComprado(Boolean enabled,Boolean validado,Boolean comprado);
 
     List<AutoSemiNuevo> findAllByEnabledAndValidadoAndComprado(Boolean enabled, Boolean validado, Boolean comprado);
+
 }

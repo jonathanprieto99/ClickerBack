@@ -87,6 +87,9 @@ public class AutoSemiNuevo {
     @OneToMany(cascade = CascadeType.ALL)
     List<InteresadoReventa> interesadoReventas;
 
+    @JsonIgnoreProperties({"autoSemiNuevo"})
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Denuncia> denuncias;
 
     public Long getId() {
         return id;
@@ -278,5 +281,13 @@ public class AutoSemiNuevo {
 
     public void setInteresadoReventas(List<InteresadoReventa> interesadoReventas) {
         this.interesadoReventas = interesadoReventas;
+    }
+
+    public List<Denuncia> getDenuncias() {
+        return denuncias;
+    }
+
+    public void setDenuncias(List<Denuncia> denuncias) {
+        this.denuncias = denuncias;
     }
 }

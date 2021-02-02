@@ -1,7 +1,9 @@
 package clicker.back.services;
 
 import clicker.back.Antiguo.Concesionarios;
+import clicker.back.entities.AutoSemiNuevo;
 import clicker.back.entities.Denuncia;
+import clicker.back.entities.Usuario;
 
 import java.util.List;
 
@@ -14,4 +16,7 @@ public interface DenunciaService {
 
     List<Denuncia> getAll();
 
+    List<Long> getIdsAutosDenunciados();
+
+    Denuncia getByAutoAndUsuario(AutoSemiNuevo autoSemiNuevo, Usuario usuario);
 }

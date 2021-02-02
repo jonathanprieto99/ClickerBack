@@ -3,11 +3,16 @@ package clicker.back.controllers;
 
 import clicker.back.Setup;
 import clicker.back.entities.*;
-import clicker.back.services.AutoSemiNuevoService;
-import clicker.back.services.AutoService;
-import clicker.back.services.UsuariosService;
-import clicker.back.services.VentaSemiNuevoService;
+import clicker.back.services.*;
+import com.amazonaws.services.dynamodbv2.xspec.L;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.ObjectBuffer;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.stream.JsonWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,9 +22,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.io.DataInput;
+import java.io.IOException;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "/post")
@@ -27,6 +32,9 @@ import java.util.List;
 public class CarPostController {
     @Autowired
     UsuariosService usuariosService;
+
+    @Autowired
+    DenunciaService denunciaService;
 
     @Autowired
     AutoSemiNuevoService autoSemiNuevoService;
@@ -200,5 +208,27 @@ public class CarPostController {
         }catch (Exception e){
             return new ResponseEntity<>("fallo",HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping(value = "/reported")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<Object> getAllReported() throws IOException {
+        List<Long> ids = denunciaService.getIdsAutosDenunciados();
+        List<AutoSemiNuevo> autoSemiNuevos = autoSemiNuevoService.getAllFromIdList(ids);
+        if(autoSemiNuevos==null){
+            return new ResponseEntity<>("BAD",HttpStatus.BAD_REQUEST);
+        }
+        for (AutoSemiNuevo autoSemiNuevo : autoSemiNuevos) {
+            if (autoSemiNuevo.getDenuncias()!=null){
+                for (Denuncia denuncia : autoSemiNuevo.getDenuncias()) {
+                    denuncia.getUsuario().setNumeroDenuncias((long) denuncia.getUsuario().getDenuncias().size());
+                }
+            }
+        }
+        return new ResponseEntity<>(autoSemiNuevos,HttpStatus.OK);
+        //JsonArray return_value = (JsonArray) new Gson().toJsonTree(autoSemiNuevos);
+        //return new ResponseEntity<>(return_value.toString(),HttpStatus.OK);
+
     }
 }
