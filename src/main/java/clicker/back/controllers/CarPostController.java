@@ -227,8 +227,7 @@ public class CarPostController {
             }
         }
         return new ResponseEntity<>(autoSemiNuevos,HttpStatus.OK);
-        //JsonArray return_value = (JsonArray) new Gson().toJsonTree(autoSemiNuevos);
-        //return new ResponseEntity<>(return_value.toString(),HttpStatus.OK);
+
 
     }
 }
